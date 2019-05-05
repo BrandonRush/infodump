@@ -7,7 +7,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="row align-baseline mb-4 bg-primary">
+      <div className="jumbotron-fluid p-5 border-bottom border-dark bg-primary">
         <div className="col-sm text-center text-light" />
         <div className="col-sm text-center text-light h2 font-weight-bold">
           <div

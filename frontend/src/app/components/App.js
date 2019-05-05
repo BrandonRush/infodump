@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container-fluid mt-5">
+        <div className="container-fluid">
           <Header />
           <TileManager>
             <Tile

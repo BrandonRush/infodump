@@ -11,7 +11,9 @@ class Header extends Component {
         <div className="row  justify-content-center align-items-end">
           <footer className="footer">
             <div className="text-light h1 justify-content-center align-items-center text-center">
-              <i className="logo icon ion-logo-github mr-2" />
+              <a href="https://github.com/BrandonRush/infodump">
+                <i className="logo icon ion-logo-github mr-2" />
+              </a>
             </div>
             <span className="text-light">Brandon Rush © 2019</span>
           </footer>

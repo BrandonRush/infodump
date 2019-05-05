@@ -29,24 +29,19 @@ class TileManager extends Component {
   render() {
     return (
       <TileProvider>
-        <nav className="navbar navbar-dark bg-primary">
-          <a
-            className="navbar-brand justify-content-center align-items-center"
-            href="#"
-          >
-            Sticky top
-          </a>
+        <nav className="navbar navbar-light justify-content-center p-3 bg-primary">
           <form className="form-inline my-2 my-lg-0">
             <input
-              className="form-control mr-sm-2"
+              className="form-control rounded mr-sm-2 p-3"
               type="search"
-              placeholder="Search"
+              placeholder="What are you looking for?"
               aria-label="Search"
+              style={{ maxWidth: '1650px', background: '#0067d5' }}
             />
           </form>
         </nav>
         <div className="container-fluid" style={{ maxWidth: '1650px' }}>
-          <div className="row  justify-content-center ">
+          <div className="row justify-content-center ">
             <React.Fragment>{this.props.children}</React.Fragment>
           </div>
         </div>

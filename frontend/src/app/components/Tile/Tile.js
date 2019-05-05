@@ -28,7 +28,9 @@ class Tile extends Component {
           <div
             className="card m-4 p-0  col-3 shadow canselect rounded-lg"
             style={{ minWidth: '360px' }}
-            onClick={() => context.updateTitle(this.props.header)}
+            onClick={() => {
+              context.changeSelection(this.props.header);
+            }}
           >
             <div className="card-header font-weight-bold noselect h5 ">
               {this.props.icon}

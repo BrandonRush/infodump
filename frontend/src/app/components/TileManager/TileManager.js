@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactSearchBox from 'react-search-box';
+import { Container, Row, Navbar } from 'react-bootstrap';
 
 const TileContext = React.createContext();
 
@@ -6,7 +8,11 @@ class TileProvider extends Component {
   state = {
     selected: '',
     changeSelection: newTitle => {
-      this.setState({ selected: newTitle });
+      if (this.state.selected === newTitle) {
+        this.setState({ selected: '' });
+      } else {
+        this.setState({ selected: newTitle });
+      }
     },
   };
 
@@ -25,26 +31,28 @@ class TileProvider extends Component {
 
 class TileManager extends Component {
   state = { tiles: [] };
+  data = [];
+
+  componentDidMount() {
+    this.props.children.forEach(child => {
+      this.data.push({ name: child.props.header });
+    });
+    console.log(this.data);
+  }
 
   render() {
     return (
       <TileProvider>
-        <nav className="navbar navbar-light justify-content-center p-3 bg-primary">
-          <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control rounded mr-sm-2 p-3"
-              type="search"
-              placeholder="What are you looking for?"
-              aria-label="Search"
-              style={{ maxWidth: '1650px', background: '#0067d5' }}
-            />
-          </form>
-        </nav>
-        <div className="container-fluid" style={{ maxWidth: '1650px' }}>
-          <div className="row justify-content-center ">
-            <React.Fragment>{this.props.children}</React.Fragment>
-          </div>
-        </div>
+        {/* <nav className="navbar navbar-light justify-content-center p-3 bg-primary" /> */}
+        <Navbar bg="primary" expand="lg">
+          <ReactSearchBox
+            placeholder="What are you looking for?"
+            data={this.data}
+          />
+        </Navbar>
+        <Container fluid style={{ maxWidth: '1650px' }}>
+          <Row className="justify-content-center ">{this.props.children}</Row>
+        </Container>
       </TileProvider>
     );
   }

@@ -7,12 +7,16 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "express": "^4.16.3",
+    "http-server": "^0.11.1",
     "polished": "^2.3.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
+    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.4.2",
+    "react-search-box": "^2.0.1",
     "styled-components": "^4.0.2",
     "styled-icons": "^5.5.0"
   },
@@ -77,6 +81,7 @@
     "docker:run": "docker run -d \"react-skeleton\"",
     "docker:build": "docker build -t \"react-skeleton\" .",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "debug": "yarn run http-server -p 8081 ./build/",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest"
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Row } from 'react-bootstrap';
 
 class Header extends Component {
   constructor(props) {
@@ -7,8 +8,8 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="container mt-5 mb-3">
-        <div className="row  justify-content-center align-items-end">
+      <Container className="mt-5 mb-3">
+        <Row className="justify-content-center align-items-end">
           <footer className="footer">
             <div className="text-light h1 justify-content-center align-items-center text-center">
               <a href="https://github.com/BrandonRush/infodump">
@@ -17,8 +18,8 @@ class Header extends Component {
             </div>
             <span className="text-light">Brandon Rush © 2019</span>
           </footer>
-        </div>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }

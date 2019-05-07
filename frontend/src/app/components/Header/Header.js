@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Jumbotron } from 'react-bootstrap';
 
 class Header extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="jumbotron-fluid p-5 border-bottom border-dark bg-primary">
+      <Jumbotron fluid className="p-5 border-bottom border-dark bg-primary">
         <div className="col-sm text-center text-light" />
         <div className="col-sm text-center text-light h2 font-weight-bold">
           <div
@@ -26,7 +27,7 @@ class Header extends Component {
             Options
           </a>
         </div>
-      </div>
+      </Jumbotron>
     );
   }
 }

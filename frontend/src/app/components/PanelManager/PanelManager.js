@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import ReactSearchBox from 'react-search-box';
 import { Container, Row, Navbar } from 'react-bootstrap';
 
-const TileContext = React.createContext();
+const PanelContext = React.createContext();
 
-class TileProvider extends Component {
+class PanelProvider extends Component {
   state = {
     selected: '',
     changeSelection: newTitle => {
@@ -22,14 +22,14 @@ class TileProvider extends Component {
 
   render() {
     return (
-      <TileContext.Provider value={this.state}>
+      <PanelContext.Provider value={this.state}>
         {this.props.children}
-      </TileContext.Provider>
+      </PanelContext.Provider>
     );
   }
 }
 
-class TileManager extends Component {
+class PanelManager extends Component {
   state = { tiles: [] };
   data = [];
 
@@ -42,7 +42,7 @@ class TileManager extends Component {
 
   render() {
     return (
-      <TileProvider>
+      <PanelProvider>
         {/* <nav className="navbar navbar-light justify-content-center p-3 bg-primary" /> */}
         <Navbar bg="primary" expand="lg">
           <ReactSearchBox
@@ -53,10 +53,10 @@ class TileManager extends Component {
         <Container fluid style={{ maxWidth: '1650px' }}>
           <Row className="justify-content-center ">{this.props.children}</Row>
         </Container>
-      </TileProvider>
+      </PanelProvider>
     );
   }
 }
 
-export const TileConsumer = TileContext.Consumer;
-export default TileManager;
+export const PanelConsumer = PanelContext.Consumer;
+export default PanelManager;

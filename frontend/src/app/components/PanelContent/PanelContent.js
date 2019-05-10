@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TileContent extends Component {
+class PanelContent extends Component {
   static propTypes = {};
 
   state = { preview: [] };
@@ -35,4 +35,4 @@ class TileContent extends Component {
   }
 }
 
-export default TileContent;
+export default PanelContent;

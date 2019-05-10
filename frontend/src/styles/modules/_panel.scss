@@ -1,0 +1,23 @@
+.panel {
+  perspective: 40px;
+  transition: color 0.3s;
+}
+
+.panel-body {
+  &:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  }
+}
+
+.panel-clicked {
+  position: absolute;
+  width: 800px !important;
+  max-height: 100%;
+  transition: width 1s;
+}
+
+.panel-leftover {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}

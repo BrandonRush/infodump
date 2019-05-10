@@ -1,0 +1,22 @@
+html {
+  /* background-image: linear-gradient(-225deg, #007bff, #0077ff); */
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  background: transparent;
+  height: 100%;
+}
+
+path {
+  fill: #52a6ff;
+
+  :hover {
+    fill: red;
+  }
+}
+
+a {
+  color: white;
+}

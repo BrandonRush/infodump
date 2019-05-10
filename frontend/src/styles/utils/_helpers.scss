@@ -1,0 +1,32 @@
+* {
+  background-color: transparent;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+// Remove button outline box
+button {
+  outline: none !important;
+}
+
+.nohighlight {
+  user-select: none;
+}
+
+.canselect {
+  cursor: pointer;
+}
+
+.isVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.isInvisible {
+  opacity: 0;
+  visibility: hidden;
+}

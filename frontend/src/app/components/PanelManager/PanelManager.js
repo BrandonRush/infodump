@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactSearchBox from 'react-search-box';
 import { Container, Row, Navbar } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 const PanelContext = React.createContext();
 
@@ -31,27 +32,23 @@ class PanelProvider extends Component {
 
 class PanelManager extends Component {
   state = { tiles: [] };
-  data = [];
 
   componentDidMount() {
-    this.props.children.forEach(child => {
-      this.data.push({ name: child.props.header });
-    });
-    console.log(this.data);
+    this.setState({ tiles: this.props.tiles });
   }
 
   render() {
     return (
       <PanelProvider>
         {/* <nav className="navbar navbar-light justify-content-center p-3 bg-primary" /> */}
-        <Navbar bg="primary" expand="lg">
+        {/* <Navbar bg="primary" expand="lg">
           <ReactSearchBox
             placeholder="What are you looking for?"
             data={this.data}
           />
-        </Navbar>
+        </Navbar> */}
         <Container fluid style={{ maxWidth: '1650px' }}>
-          <Row className="justify-content-center ">{this.props.children}</Row>
+          <Row className="justify-content-center ">{this.state.tiles}</Row>
         </Container>
       </PanelProvider>
     );

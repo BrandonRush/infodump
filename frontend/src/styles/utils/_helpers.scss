@@ -30,3 +30,11 @@ button {
   opacity: 0;
   visibility: hidden;
 }
+
+.transparent {
+  background-color: transparent;
+}
+
+::selection {
+  background: red;
+}

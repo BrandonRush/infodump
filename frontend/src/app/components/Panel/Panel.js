@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import { PanelConsumer } from '../PanelManager/PanelManager';
+import PanelContent from '../PanelContent/PanelContent';
+import PanelContentItem from '../PanelContentItem/PanelContentItem';
 
 class Panel extends Component {
   static propTypes = {
@@ -11,9 +14,10 @@ class Panel extends Component {
     footer: PropTypes.string,
     icon: PropTypes.element,
     colors: PropTypes.object,
+    preview: PropTypes.arrayOf(PropTypes.object),
   };
 
-  state = { preview: [], selected: false, mouseOver: false };
+  state = { selected: false, mouseOver: false, mouseDown: false };
 
   componentDidMount() {}
 
@@ -78,79 +82,113 @@ class Panel extends Component {
 
   render() {
     const colors = this.props.colors || {
-      header: 'black',
+      key: 'black',
       primary: 'lightgray',
       secondary: 'gray',
     };
+
+    let previewArr = this.props.preview;
+    let previewList = !this.props.preview ? (
+      <div className="align-items-center">
+        <Spinner
+          animation="border"
+          role="status"
+          style={{ color: colors.header }}
+        >
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    ) : (
+      previewArr.map(item => {
+        return (
+          <PanelContentItem
+            name={item.name}
+            value={item.value}
+            key={item.name}
+          />
+        );
+      })
+    );
+
+    console.log(previewList);
 
     return (
       <PanelConsumer>
         {context => (
           <Card
-            className={classNames('m-4 p-0 col-3 rounded-lg panel', {
-              'panel-leftover shadow ':
-                this.props.header !== context.selected && context.selected,
-              'panel-clicked': this.props.header === context.selected,
+            className={classNames('m-4 p-0 col-3 panel canselect', {
+              'panel-waiting': context.selected === '',
+              'panel-leftover ':
+                this.props.title !== context.selected && context.selected,
+              'panel-clicked': this.props.title === context.selected,
             })}
-            style={{ minWidth: '360px' }}
+            onClick={() => {
+              this.props.title !== context.selected &&
+                context.changeSelection(this.props.title);
+            }}
           >
             <Card.Header
               className="font-weight-bold nohighlight h5"
-              style={{ color: colors.header }}
+              style={{
+                color: colors.header,
+                border: 'none',
+                background: 'white',
+              }}
             >
               {this.props.icon}
-              {this.props.header}
+              {this.props.title}
               <button
                 type="button"
                 className={classNames('close ', {
-                  invisible: this.props.header !== context.selected,
+                  invisible: this.props.title !== context.selected,
                 })}
                 aria-label="Close"
+                style={{ color: 'black' }}
                 onClick={() => {
-                  context.changeSelection(this.props.header);
+                  context.changeSelection(this.props.title);
                 }}
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </Card.Header>
             <Card.Body
-              className="nohighlight canselect"
-              onClick={() => {
-                context.changeSelection(this.props.header);
+              className="nohighlight"
+              onMouseDown={() => {
+                this.setState({ mouseDown: true });
+              }}
+              onMouseUp={() => {
+                this.setState({ mouseDown: false });
               }}
               onMouseEnter={() => {
                 this.setState({ mouseOver: true }, () => {
                   console.log(
-                    `Mouse entered ${this.props.header}: ${
-                      this.state.mouseOver
-                    }`
+                    `Mouse entered ${this.props.title}: ${this.state.mouseOver}`
                   );
                 });
               }}
               onMouseLeave={() => {
                 this.setState({ mouseOver: false }, () => {
                   console.log(
-                    `Mouse left ${this.props.header}: ${!this.state.mouseOver}`
+                    `Mouse left ${this.props.title}: ${!this.state.mouseOver}`
                   );
                 });
               }}
             >
-              <span>
-                <h5 className="card-title">test</h5>
-              </span>
-              <h6 className="card-subtitle mb-2 text-muted nohighlight">
-                {this.props.summary}
-              </h6>
+              <PanelContent>{previewList}</PanelContent>
             </Card.Body>
             <Card.Footer
               className=" nohighlight text-right"
-              style={{ color: colors.header }}
+              style={{
+                color: colors.header,
+                border: 'none',
+                background: 'white',
+              }}
             >
-              {this.props.footer ? (
+              {/* {this.props.footer ? (
                 this.props.footer
               ) : (
                 <i className="icon ion-md-arrow-round-forward mr-2" />
-              )}
+              )} */}
             </Card.Footer>
           </Card>
         )}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
   constructor(props) {

@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
+
 class PanelContentItem extends Component {
   static propTypes = {
-    highlights: PropTypes.bool,
+    data: PropTypes.object,
+    variant: PropTypes.oneOf(['normal', 'function', 'subtitle']),
   };
 
   state = { preview: [] };
 
   getValue(callback) {}
 
+  handleFunction() {}
+
+  handleString() {}
+
+  copyToClipboard() {}
+
   componentDidMount() {}
 
   render() {
+    let value;
+    if (typeof this.props.value === 'function') {
+      value = this.props.value() || 'Not Found';
+    } else if (typeof this.props.value === 'string') {
+      value = this.props.value;
+    }
+
     return (
-      <div className="item ">
-        <span className="font-weight-bold">{this.props.name}</span>
-        <span className="">{this.props.value()}</span>
+      <div className="item">
+        <span className="bold-text">{this.props.name}</span>
+        <span
+          className={classNames('normal-text', {
+            inactive: value === 'Not Found',
+          })}
+        >
+          {value}
+        </span>
       </div>
     );
   }

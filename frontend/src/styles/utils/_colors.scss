@@ -1,11 +1,15 @@
-$theme-normal:(
+$theme: (
   'normal': (
-    'base': #007bff,
-    'light': white,
-    'dark': black 
-  )
-
-  'highlights':(
+    'logo': rgb(128, 108, 219),
+    'primary': #828bd4,
+    'warning': rgb(205, 163, 211),
+    'light': rgb(242, 238, 255),
+    'dark': rgb(8, 6, 36),
+    'gray': rgb(212, 207, 255),
+    'background': #f0f2ff,
+    'foreground': #eaedff,
+  ),
+  'highlights': (
     '1': red,
     '2': blue,
     '3': green,
@@ -21,9 +25,12 @@ $theme-normal:(
     '13': seagreen,
     '14': goldenrod,
     '15': lightcoral,
-    '16': mediumslateblue
-  )
-)
-$theme-dark:(
-  'normal':
-)
+    '16': mediumslateblue,
+  ),
+);
+// $theme-dark:(
+//   'normal':
+// )
+@function setcolor($scheme, $tone) {
+  @return map-get(map-get($theme, $scheme), $tone);
+}

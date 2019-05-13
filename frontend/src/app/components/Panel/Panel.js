@@ -9,11 +9,13 @@ import PanelContentItem from '../PanelContentItem/PanelContentItem';
 
 class Panel extends Component {
   static propTypes = {
-    header: PropTypes.string,
-    summary: PropTypes.string,
-    footer: PropTypes.string,
-    icon: PropTypes.element,
     colors: PropTypes.object,
+    data: PropTypes.object,
+    description: PropTypes.string,
+    footer: PropTypes.string,
+    header: PropTypes.string,
+    icon: PropTypes.element,
+    new: PropTypes.bool,
     preview: PropTypes.arrayOf(PropTypes.object),
   };
 
@@ -110,13 +112,15 @@ class Panel extends Component {
       })
     );
 
-    console.log(previewList);
+    // let waitingState = context.selected;
+    // let clickedState = this.props.title === context.selected;
+    // let notSelectedState = this.props.title !== context.selected && context.selected;
 
     return (
       <PanelConsumer>
         {context => (
-          <Card
-            className={classNames('m-4 p-0 col-3 panel canselect', {
+          <div
+            className={classNames('panel m-4 p-0 col-3 canselect', {
               'panel-waiting': context.selected === '',
               'panel-leftover ':
                 this.props.title !== context.selected && context.selected,
@@ -127,8 +131,8 @@ class Panel extends Component {
                 context.changeSelection(this.props.title);
             }}
           >
-            <Card.Header
-              className="font-weight-bold nohighlight h5"
+            <div
+              className="panel-header font-weight-bold nohighlight h5"
               style={{
                 color: colors.header,
                 border: 'none',
@@ -143,16 +147,16 @@ class Panel extends Component {
                   invisible: this.props.title !== context.selected,
                 })}
                 aria-label="Close"
-                style={{ color: 'black' }}
+                style={{ color: 'white' }}
                 onClick={() => {
                   context.changeSelection(this.props.title);
                 }}
               >
                 <span aria-hidden="true">&times;</span>
               </button>
-            </Card.Header>
-            <Card.Body
-              className="nohighlight"
+            </div>
+            <div
+              className="panel-body nohighlight"
               onMouseDown={() => {
                 this.setState({ mouseDown: true });
               }}
@@ -175,7 +179,7 @@ class Panel extends Component {
               }}
             >
               <PanelContent>{previewList}</PanelContent>
-            </Card.Body>
+            </div>
             <Card.Footer
               className=" nohighlight text-right"
               style={{
@@ -190,7 +194,7 @@ class Panel extends Component {
                 <i className="icon ion-md-arrow-round-forward mr-2" />
               )} */}
             </Card.Footer>
-          </Card>
+          </div>
         )}
       </PanelConsumer>
     );

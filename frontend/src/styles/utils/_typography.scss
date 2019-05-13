@@ -1,0 +1,16 @@
+.normal-text {
+  font-weight: 400;
+  color: setcolor('normal', 'dark');
+
+  &.inactive {
+    color: setcolor('normal', 'light');
+    background-color: setcolor('normal', 'warning');
+    border-radius: $border-radius;
+    padding: 2px 8px 2px 8px;
+  }
+}
+
+.bold-text {
+  font-weight: 600;
+  color: setcolor('normal', 'dark');
+}

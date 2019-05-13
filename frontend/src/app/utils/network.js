@@ -1,4 +1,4 @@
-const getIP = function() {
+export const getIP_RTC = function() {
   var myPeerConnection =
     window.RTCPeerConnection ||
     window.mozRTCPeerConnection ||
@@ -31,6 +31,7 @@ const getIP = function() {
     })
     .catch(function(reason) {
       // An error occurred, so handle the failure to connect
+      console.err(`Could not connect. Error: ${reason}`);
     });
 
   //listen for candidate events

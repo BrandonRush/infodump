@@ -1,7 +1,11 @@
 // import utilities
+@import 'utils/appearance';
+@import 'utils/colors';
 @import 'utils/helpers';
+@import 'utils/typography';
 
 //import modules
-@import 'modules/footer';
-@import 'modules/panel';
-@import 'modules/background';
+@import 'components/background';
+@import 'components/footer';
+@import 'components/panel';
+@import 'components/header';

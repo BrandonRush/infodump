@@ -17,9 +17,7 @@ class PanelProvider extends Component {
     },
   };
 
-  componentDidUpdate() {
-    console.log(`Selected ${this.state.selected} `);
-  }
+  componentDidUpdate() {}
 
   render() {
     return (

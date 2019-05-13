@@ -1,19 +1,56 @@
 .panel {
-  perspective: 40px;
-  transition: color 0.3s;
-  transition: box-shadow 0.2s;
-  transition: transform 0.2s;
-  min-width: 360px !important;
-}
+  background-clip: border-box;
+  background-color: #fff;
 
-.panel-body {
+  border-radius: $border-radius;
+  box-shadow: map-get($shadows, 'high');
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-width: 360px !important;
+  perspective: 40px;
+  position: relative;
+  word-wrap: break-word;
+
+  transition: box-shadow 0.2s;
+  transition: color 0.3s;
+  transition: transform 0.2s;
+
+  &-header {
+    color: setcolor('normal', 'light') !important;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: setcolor('normal', 'primary') !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+    &:first-child {
+      border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    }
+  }
+
+  &-footer {
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+
+    &:last-child {
+      border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
+    }
+  }
+
+  &-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
 }
 
 .panel-clicked {
   position: absolute;
-  width: 800px !important;
+  // width: 800px !important;
   transition: width 1s;
-  min-width: 55% !important;
+  max-width: 1000px !important;
 }
 
 .panel-leftover {
@@ -23,9 +60,6 @@
 }
 
 .panel-waiting {
-  // &:hover {
-  //   transform: translateY(-5px);
-  // }
   &:active {
     transform: translateY(+5px);
   }
@@ -67,6 +101,10 @@
   padding: 0.75rem 1.25rem;
   // background-color: #fff;
   // border: 1px solid rgba(0, 0, 0, 0.125);
+
+  & .disabled {
+    color: gray;
+  }
 
   &:hover {
     background: #eeeeee;

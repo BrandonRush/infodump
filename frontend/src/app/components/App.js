@@ -59,7 +59,7 @@ class App extends Component {
                     value: device.getManufacturer,
                   },
                 ]}
-                data={browser.data}
+                data={device.data}
               />,
               <Panel
                 key="Network"
@@ -69,8 +69,8 @@ class App extends Component {
                 colors={{ header: 'blue' }}
                 preview={[
                   {
-                    name: 'IP Address',
-                    value: network.getIP_RTC,
+                    name: 'Manufacturer',
+                    value: device.getManufacturer,
                   },
                 ]}
                 data={browser.data}

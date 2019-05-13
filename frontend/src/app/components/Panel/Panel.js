@@ -112,6 +112,13 @@ class Panel extends Component {
       })
     );
 
+    let dataArr = this.props.data;
+    let dataList = dataArr.map(item => {
+      return (
+        <PanelContentItem name={item.name} value={item.value} key={item.name} />
+      );
+    });
+
     // let waitingState = context.selected;
     // let clickedState = this.props.title === context.selected;
     // let notSelectedState = this.props.title !== context.selected && context.selected;
@@ -157,28 +164,31 @@ class Panel extends Component {
             </div>
             <div
               className="panel-body nohighlight"
-              onMouseDown={() => {
-                this.setState({ mouseDown: true });
-              }}
-              onMouseUp={() => {
-                this.setState({ mouseDown: false });
-              }}
-              onMouseEnter={() => {
-                this.setState({ mouseOver: true }, () => {
-                  console.log(
-                    `Mouse entered ${this.props.title}: ${this.state.mouseOver}`
-                  );
-                });
-              }}
-              onMouseLeave={() => {
-                this.setState({ mouseOver: false }, () => {
-                  console.log(
-                    `Mouse left ${this.props.title}: ${!this.state.mouseOver}`
-                  );
-                });
-              }}
+              // onMouseDown={() => {
+              //   this.setState({ mouseDown: true });
+              // }}
+              // onMouseUp={() => {
+              //   this.setState({ mouseDown: false });
+              // }}
+              // onMouseEnter={() => {
+              //   this.setState({ mouseOver: true }, () => {
+              //     console.log(
+              //       `Mouse entered ${this.props.title}: ${this.state.mouseOver}`
+              //     );
+              //   });
+              // }}
+              // onMouseLeave={() => {
+              //   this.setState({ mouseOver: false }, () => {
+              //     console.log(
+              //       `Mouse left ${this.props.title}: ${!this.state.mouseOver}`
+              //     );
+              //   });
+              // }}
             >
               <PanelContent>{previewList}</PanelContent>
+              <PanelContent>
+                {this.props.title === context.selected && dataList}
+              </PanelContent>
             </div>
             <Card.Footer
               className=" nohighlight text-right"

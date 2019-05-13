@@ -21,4 +21,5 @@ export const data = [
   { name: 'productSub', value: window.navigator.productSub },
   { name: 'vendor', value: window.navigator.vendor },
   { name: 'vendorSub', value: window.navigator.vendorSub },
+  { name: 'onLine', value: window.navigator.onLine },
 ];

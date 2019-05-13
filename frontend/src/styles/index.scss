@@ -3,9 +3,11 @@
 @import 'utils/colors';
 @import 'utils/helpers';
 @import 'utils/typography';
+@import 'utils/mixins';
 
 //import modules
 @import 'components/background';
 @import 'components/footer';
 @import 'components/panel';
 @import 'components/header';
+@import 'components/items';

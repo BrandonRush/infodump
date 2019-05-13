@@ -3,10 +3,6 @@ import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Container fluid className="p-5 mt-5 transparent nohighlight">
@@ -23,12 +19,7 @@ class Header extends Component {
               infodump
             </div>
           </div>
-          <div className="col-sm text-center text-light font-weight-normal">
-            {/* <a className="text-light font-weight-normal" href="/options/">
-              <i className="icon ion-md-settings mr-2" />
-              Options
-            </a> */}
-          </div>
+          <div className="col-sm text-center text-light font-weight-normal" />
         </Row>
       </Container>
     );

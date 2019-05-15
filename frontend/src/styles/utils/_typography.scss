@@ -3,14 +3,28 @@
   color: setcolor('normal', 'dark');
 
   &.inactive {
-    color: setcolor('normal', 'light');
+    color: setcolor('normal', 'warning-foreground');
     background-color: setcolor('normal', 'warning');
     border-radius: $border-radius;
     padding: 2px 8px 2px 8px;
+    font-weight: 600;
+  }
+
+  &.no-support {
+    color: setcolor('normal', 'error-foreground');
+    background-color: setcolor('normal', 'error');
+    border-radius: $border-radius;
+    padding: 2px 8px 2px 8px;
+    font-weight: 600;
   }
 }
 
 .bold-text {
   font-weight: 600;
+  color: setcolor('normal', 'dark');
+}
+
+.bolder-text {
+  font-weight: 700;
   color: setcolor('normal', 'dark');
 }

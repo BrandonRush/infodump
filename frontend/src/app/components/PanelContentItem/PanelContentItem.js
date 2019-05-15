@@ -6,7 +6,7 @@ import classNames from 'classnames';
 class PanelContentItem extends Component {
   static propTypes = {
     data: PropTypes.object,
-    variant: PropTypes.oneOf(['normal', 'function', 'header', 'spinner']),
+    variant: PropTypes.oneOf(['server', 'header', 'spinner']),
   };
 
   state = { preview: [] };
@@ -17,19 +17,30 @@ class PanelContentItem extends Component {
 
   handleString() {}
 
-  copyToClipboard = event => {
+  copyValue = async event => {
     event.preventDefault();
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
 
-    navigator.clipboard.writeText(this.props.value).then(
-      function() {
-        console.log('Async: Copying to clipboard was successful!');
-      },
-      function(err) {
-        console.error('Async: Could not copy text: ', err);
-      }
-    );
+    try {
+      await navigator.clipboard.writeText(this.fixValue(this.props.data.value));
+      console.log('Async: Copying to clipboard was successful!');
+    } catch (e) {
+      console.error('Async: Could not copy text: ', e);
+    }
+  };
+
+  copyName = async event => {
+    event.preventDefault();
+    event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
+
+    try {
+      await navigator.clipboard.writeText(this.props.data.name);
+      console.log('Async: Copying to clipboard was successful!');
+    } catch (e) {
+      console.error('Async: Could not copy text: ', err);
+    }
   };
 
   componentDidMount() {}
@@ -38,31 +49,42 @@ class PanelContentItem extends Component {
     return value || 'Not Found';
   };
 
-  render() {
+  fixValue = elem => {
     let value = do {
-      if (typeof this.props.value === 'function') {
-        value = this.props.value();
-      } else if (typeof this.props.value === 'string') {
-        value = this.props.value;
-      } else if (typeof this.props.value === 'number') {
-        value = this.props.value;
-      } else if (Array.isArray(this.props.value)) {
-        value = this.props.value
+      if (typeof elem === 'function') {
+        value = elem();
+      } else if (typeof elem === 'string') {
+        value = elem;
+      } else if (typeof elem === 'number') {
+        value = elem;
+      } else if (typeof elem === 'boolean') {
+        value = String(elem);
+      } else if (Array.isArray(elem) && typeof elem[0] === 'object') {
+      } else if (Array.isArray(elem) && typeof elem[0] === 'string') {
+        value = elem
           .reduce((prev, curr) => prev + curr + ', ', '')
           .trim()
           .slice(0, -1);
       }
     };
+    return this.checkIfEmpty(value);
+  };
 
-    // console.log(value);
-    value = this.checkIfEmpty(value);
-
+  render() {
+    let value = this.fixValue(this.props.data.value);
     return (
-      <div className="item" onClick={this.copyToClipboard}>
-        <span className="bold-text item-entry">{this.props.name}</span>
+      <div className="item">
         <span
-          className={classNames('normal-text item-entry', {
+          className="bolder-text item-entry item-entry-name"
+          onClick={this.copyName}
+        >
+          {this.props.data.name}
+        </span>
+        <span
+          onClick={this.copyValue}
+          className={classNames('normal-text item-entry item-entry-value', {
             inactive: value === 'Not Found',
+            'no-support': value === 'No Support',
           })}
         >
           {value}

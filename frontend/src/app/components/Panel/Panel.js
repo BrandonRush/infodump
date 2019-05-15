@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import { PanelConsumer } from '../PanelManager/PanelManager';
-import PanelContent from '../PanelContent/PanelContent';
+import PanelContainer from '../PanelContainer/PanelContainer';
 import PanelContentItem from '../PanelContentItem/PanelContentItem';
 
 class Panel extends Component {
@@ -47,41 +47,6 @@ class Panel extends Component {
     }
   };
 
-  mouse = {
-    _x: 0,
-    _y: 0,
-    x: 0,
-    y: 0,
-
-    updatePosition: event => {
-      var e = event || window.event;
-      this.x = e.clientX - this._x;
-      this.y = (e.clientY - this._y) * -1;
-    },
-
-    setOrigin: e => {
-      this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
-      this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
-    },
-
-    show: () => {
-      return '(' + this.x + ', ' + this.y + ')';
-    },
-  };
-
-  update = event => {
-    mouse.updatePosition(event);
-    updateTransformStyle(
-      (mouse.y / inner.offsetHeight / 2).toFixed(2),
-      (mouse.x / inner.offsetWidth / 2).toFixed(2)
-    );
-  };
-
-  updateTransformStyle = (x, y) => {
-    var style = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg)';
-    inner.style.transform = style;
-  };
-
   render() {
     const colors = this.props.colors || {
       key: 'black',
@@ -89,7 +54,7 @@ class Panel extends Component {
       secondary: 'gray',
     };
 
-    let previewArr = this.props.preview;
+    const previewArr = this.props.preview;
     let previewList = !this.props.preview ? (
       <div className="align-items-center">
         <Spinner
@@ -102,21 +67,13 @@ class Panel extends Component {
       </div>
     ) : (
       previewArr.map(item => {
-        return (
-          <PanelContentItem
-            name={item.name}
-            value={item.value}
-            key={item.name}
-          />
-        );
+        return <PanelContentItem data={item} key={item.name} />;
       })
     );
 
-    let dataArr = this.props.data;
+    const dataArr = this.props.data;
     let dataList = dataArr.map(item => {
-      return (
-        <PanelContentItem name={item.name} value={item.value} key={item.name} />
-      );
+      return <PanelContentItem data={item} key={item.name} />;
     });
 
     // let waitingState = context.selected;
@@ -154,7 +111,7 @@ class Panel extends Component {
                   invisible: this.props.title !== context.selected,
                 })}
                 aria-label="Close"
-                style={{ color: 'white' }}
+                style={{ color: 'black' }}
                 onClick={() => {
                   context.changeSelection(this.props.title);
                 }}
@@ -185,13 +142,13 @@ class Panel extends Component {
               //   });
               // }}
             >
-              <PanelContent>{previewList}</PanelContent>
-              <PanelContent>
-                {this.props.title === context.selected && dataList}
-              </PanelContent>
+              <PanelContainer>{previewList}</PanelContainer>
+              {this.props.title === context.selected ? (
+                <PanelContainer>{dataList}</PanelContainer>
+              ) : null}
             </div>
-            <Card.Footer
-              className=" nohighlight text-right"
+            <div
+              className=" nohighlight text-right panel-footer"
               style={{
                 color: colors.header,
                 border: 'none',
@@ -203,7 +160,7 @@ class Panel extends Component {
               ) : (
                 <i className="icon ion-md-arrow-round-forward mr-2" />
               )} */}
-            </Card.Footer>
+            </div>
           </div>
         )}
       </PanelConsumer>

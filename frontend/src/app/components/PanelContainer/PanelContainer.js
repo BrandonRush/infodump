@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 
-class PanelContent extends Component {
+class PanelContainer extends Component {
   static propTypes = {};
 
   render() {
@@ -10,4 +10,4 @@ class PanelContent extends Component {
   }
 }
 
-export default PanelContent;
+export default PanelContainer;

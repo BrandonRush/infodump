@@ -7,8 +7,10 @@ import Panel from './Panel/Panel';
 import PanelManager from './PanelManager/PanelManager';
 
 import * as device from '../utils/device';
+import * as audio from '../utils/audio';
 import * as network from '../utils/network';
 import * as browser from '../utils/browser';
+import * as plugins from '../utils/plugins';
 import * as operatingsystem from '../utils/operatingsystem';
 
 import '../../styles/index.scss';
@@ -55,8 +57,8 @@ class App extends Component {
                     value: device.getProduct,
                   },
                   {
-                    name: 'Manufacturer',
-                    value: device.getManufacturer,
+                    name: 'Display',
+                    value: device.getDisplay,
                   },
                 ]}
                 data={device.data}
@@ -73,7 +75,35 @@ class App extends Component {
                     value: device.getManufacturer,
                   },
                 ]}
-                data={browser.data}
+                data={network.data}
+              />,
+              <Panel
+                key="Plugins"
+                title="Plugins"
+                summary="Learn specs of your current device and monitor."
+                icon={<i className="icon mr-2 ion-md-flash mr-1" />}
+                colors={{ header: 'orangered' }}
+                preview={[
+                  {
+                    name: 'Manufacturer',
+                    value: device.getManufacturer,
+                  },
+                ]}
+                data={plugins.data}
+              />,
+              <Panel
+                key="Audio"
+                title="Audio"
+                summary="Learn specs of your current device and monitor."
+                icon={<i className="icon mr-2 ion-md-musical-notes mr-1" />}
+                colors={{ header: 'olivedrab' }}
+                preview={[
+                  {
+                    name: 'Manufacturer',
+                    value: device.getManufacturer,
+                  },
+                ]}
+                data={audio.data}
               />,
               // <Panel
               //   key="Location"
@@ -127,13 +157,6 @@ class App extends Component {
               //   colors={{ header: 'deeppink' }}
               // />,
               // <Panel
-              //   key="Plugins"
-              //   title="Plugins"
-              //   summary="Learn specs of your current device and monitor."
-              //   icon={<i className="icon mr-2 ion-md-flash mr-1" />}
-              //   colors={{ header: 'orangered' }}
-              // />,
-              // <Panel
               //   key="Canvas"
               //   title="Canvas"
               //   summary="Learn specs of your current device and monitor."
@@ -146,13 +169,6 @@ class App extends Component {
               //   summary="Learn specs of your current device and monitor."
               //   icon={<i className="icon mr-2 ion-logo-buffer mr-1" />}
               //   colors={{ header: 'peru' }}
-              // />,
-              // <Panel
-              //   key="Audio"
-              //   title="Audio"
-              //   summary="Learn specs of your current device and monitor."
-              //   icon={<i className="icon mr-2 ion-md-musical-notes mr-1" />}
-              //   colors={{ header: 'olivedrab' }}
               // />,
               // <Panel
               //   key="WebGL"

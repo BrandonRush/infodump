@@ -12,7 +12,7 @@ class Header extends Component {
             <div
               href="/#"
               role="link"
-              className="noselect canselect text-light logo"
+              className="noselect canselect text-light title"
               style={{ cursorDecoration: 'none' }}
             >
               <i className="icon ion-md-information-circle mr-2" />

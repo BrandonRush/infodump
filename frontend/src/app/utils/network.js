@@ -46,3 +46,29 @@ export const getIP_RTC = function() {
     ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
   };
 };
+
+const connection =
+  navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+
+export const data = [
+  {
+    name: 'API Support',
+    value: connection?.effectiveType ?? 'No Support',
+  },
+  {
+    name: 'downlink',
+    value: connection?.downlink ?? 'No Support',
+  },
+  {
+    name: 'saveData',
+    value: connection?.saveData ?? 'No Support',
+  },
+  {
+    name: 'effectiveType',
+    value: connection?.effectiveType ?? 'No Support',
+  },
+  {
+    name: 'rtt',
+    value: connection?.rtt ?? 'No Support',
+  },
+];

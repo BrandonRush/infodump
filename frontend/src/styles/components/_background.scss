@@ -2,7 +2,7 @@
   background-color: transparent;
 
   &::selection {
-    background: setcolor('normal', 'warning');
+    background: setcolor('normal', 'primary');
     color: setcolor('normal', 'light');
   }
 }

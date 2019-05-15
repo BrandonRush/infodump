@@ -1,9 +1,10 @@
 .panel {
+  @include shadowmedium;
+
   background-clip: border-box;
   background-color: setcolor('normal', 'light-background');
 
   border-radius: $border-radius;
-  box-shadow: map-get($shadows, 'high');
   overflow: hidden;
 
   display: flex;
@@ -65,11 +66,11 @@
 .panel-waiting {
   &:active {
     // transform: translateY(+5px);
-    transform: scale(0.95, 0.95);
-    box-shadow: map-get($shadows, 'medium');
+    transform: scale(0.97, 0.97);
+    @include shadowlow;
   }
-  transition: transform 0.3s;
-  // transition: box-shadow 10.3s;
+  // transition: transform 0.3s;
+  transition: box-shadow 0.1s;
 }
 
 @media only screen and (max-width: 862px) {

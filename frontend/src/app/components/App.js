@@ -15,10 +15,6 @@ import * as operatingsystem from '../utils/operatingsystem';
 
 import '../../styles/index.scss';
 
-const thisisatest = function() {
-  return 'it worked';
-};
-
 class App extends Component {
   render() {
     return (
@@ -105,6 +101,20 @@ class App extends Component {
                 ]}
                 data={audio.data}
               />,
+              <Panel
+                key="Operating System"
+                title="Operating System"
+                summary="Learn specs of your current device and monitor."
+                icon={<i className="icon mr-2 ion-md-cube mr-1" />}
+                colors={{ header: 'teal' }}
+                preview={[
+                  {
+                    name: 'OS',
+                    value: `${operatingsystem.getFamily()} ${operatingsystem.getOSVersion()}`,
+                  },
+                ]}
+                data={audio.data}
+              />,
               // <Panel
               //   key="Location"
               //   title="Location"
@@ -121,19 +131,6 @@ class App extends Component {
               //   //     value: browser.getBrowserVersion,
               //   //   },
               //   // ]}
-              // />,
-              // <Panel
-              //   key="Operating System"
-              //   title="Operating System"
-              //   summary="Learn specs of your current device and monitor."
-              //   icon={<i className="icon mr-2 ion-md-cube mr-1" />}
-              //   colors={{ header: 'teal' }}
-              //   preview={[
-              //     {
-              //       name: 'OS',
-              //       value: `${operatingsystem.getFamily()} ${operatingsystem.getOSVersion()}`,
-              //     },
-              //   ]}
               // />,
               // <Panel
               //   key="Privacy"

@@ -20,6 +20,7 @@
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.4.2",
     "react-search-box": "^2.0.1",
+    "react-transition-group": "^4.0.1",
     "styled-components": "^4.0.2",
     "styled-icons": "^5.5.0"
   },

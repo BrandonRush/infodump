@@ -38,13 +38,6 @@ class PanelManager extends Component {
   render() {
     return (
       <PanelProvider>
-        {/* <nav className="navbar navbar-light justify-content-center p-3 bg-primary" /> */}
-        {/* <Navbar bg="primary" expand="lg">
-          <ReactSearchBox
-            placeholder="What are you looking for?"
-            data={this.data}
-          />
-        </Navbar> */}
         <Container fluid style={{ maxWidth: '1650px' }}>
           <Row className="justify-content-center ">{this.state.tiles}</Row>
         </Container>

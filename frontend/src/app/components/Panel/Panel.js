@@ -147,20 +147,6 @@ class Panel extends Component {
                 <PanelContainer>{dataList}</PanelContainer>
               ) : null}
             </div>
-            <div
-              className=" nohighlight text-right panel-footer"
-              style={{
-                color: colors.header,
-                border: 'none',
-                background: 'white',
-              }}
-            >
-              {/* {this.props.footer ? (
-                this.props.footer
-              ) : (
-                <i className="icon ion-md-arrow-round-forward mr-2" />
-              )} */}
-            </div>
           </div>
         )}
       </PanelConsumer>
@@ -169,3 +155,18 @@ class Panel extends Component {
 }
 
 export default Panel;
+
+// <div
+//   className=" nohighlight text-right panel-footer"
+//   style={{
+//     color: colors.header,
+//     border: 'none',
+//     background: 'white',
+//   }}
+// >
+//   {/* {this.props.footer ? (
+//     this.props.footer
+//   ) : (
+//     <i className="icon ion-md-arrow-round-forward mr-2" />
+//   )} */}
+// </div>

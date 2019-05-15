@@ -4,3 +4,23 @@
   justify-content: center;
   flex-direction: $direction;
 }
+
+@mixin shadowverylow {
+  box-shadow: map-get($shadows, 'verylow');
+  box-shadow: map-get($shadows, 'verylowspread');
+}
+
+@mixin shadowlow {
+  box-shadow: map-get($shadows, 'low');
+  box-shadow: map-get($shadows, 'lowspread');
+}
+
+@mixin shadowmedium {
+  box-shadow: map-get($shadows, 'medium');
+  box-shadow: map-get($shadows, 'mediumspread');
+}
+
+@mixin shadowhigh {
+  box-shadow: map-get($shadows, 'high');
+  box-shadow: map-get($shadows, 'highspread');
+}

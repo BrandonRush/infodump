@@ -1,7 +1,13 @@
 $shadows: (
-  'light': 0 1px 6px 0 hsla(0, 0%, 0.2, 0.1),
-  'medium': 0 4px 10px 0 hsla(0, 0%, 0.2, 0.175),
-  'high': 0 5px 15px 0 hsla(0, 0%, 0.2, 0.2),
+  'verylow': 0 1px 2px 0 hsla(0, 0%, 0.2, 0.1),
+  'verylowspread': 0 1px 3px 0 hsla(0, 0%, 0.2, 0.1),
+  'low': 0 2px 4px 0 hsla(0, 0%, 0.2, 0.1),
+  'lowspread': 0 3px 6px 0 hsla(0, 0%, 0.2, 0.1),
+  'medium': 0 3px 6px 0 hsla(0, 0%, 0.2, 0.175),
+  'mediumspread': 0 10px 20px 0 hsla(0, 0%, 0.2, 0.2),
+  'high': 0 5px 10px 0 hsla(0, 0%, 0.2, 0.2),
+  'highspread': 0 15px 25px 0 hsla(0, 0%, 0.2, 0.2),
+  'veryhigh': 0 20px 40px 0 hsla(0, 0%, 0.2, 0.2),
 );
 
 $border-radius: 0.5rem;

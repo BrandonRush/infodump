@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ReactSearchBox from 'react-search-box';
-import { Container, Row, Navbar } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+
+import Panel from '../Panel/Panel';
 
 const PanelContext = React.createContext();
 
@@ -29,17 +30,19 @@ class PanelProvider extends Component {
 }
 
 class PanelManager extends Component {
-  state = { tiles: [] };
+  state = { panels: this.props.panels };
 
-  componentDidMount() {
-    this.setState({ tiles: this.props.tiles });
-  }
+  componentDidMount() {}
 
   render() {
     return (
       <PanelProvider>
         <Container fluid style={{ maxWidth: '1650px' }}>
-          <Row className="justify-content-center ">{this.state.tiles}</Row>
+          <Row className="justify-content-center ">
+            {this.state.panels.map((panel, index) => {
+              return <Panel key={panel.title} data={panel} />;
+            })}
+          </Row>
         </Container>
       </PanelProvider>
     );

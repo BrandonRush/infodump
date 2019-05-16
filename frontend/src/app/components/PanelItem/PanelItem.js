@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-class PanelContentItem extends Component {
+class PanelItem extends Component {
   static propTypes = {
     data: PropTypes.object,
     variant: PropTypes.oneOf(['server', 'header', 'spinner']),
@@ -74,24 +74,28 @@ class PanelContentItem extends Component {
     let value = this.fixValue(this.props.data.value);
     return (
       <div className="item">
-        <span
-          className="bolder-text item-entry item-entry-name"
-          onClick={this.copyName}
-        >
-          {this.props.data.name}
-        </span>
-        <span
-          onClick={this.copyValue}
-          className={classNames('normal-text item-entry item-entry-value', {
-            inactive: value === 'Not Found',
-            'no-support': value === 'No Support',
-          })}
-        >
-          {value}
-        </span>
+        <div className="item-container">
+          <span
+            className="bolder-text item-entry item-entry-name"
+            onClick={this.copyName}
+          >
+            {this.props.data.name}
+          </span>
+        </div>
+        <div className="item-container">
+          <span
+            onClick={this.copyValue}
+            className={classNames('normal-text item-entry item-entry-value', {
+              inactive: value === 'Not Found',
+              'no-support': value === 'No Support',
+            })}
+          >
+            {value}
+          </span>
+        </div>
       </div>
     );
   }
 }
 
-export default PanelContentItem;
+export default PanelItem;

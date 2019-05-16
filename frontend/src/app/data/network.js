@@ -77,7 +77,7 @@ const data = [
 
 const networkPanel = {
   title: 'Network',
-  summary: 'Learn specs of your current device and monitor.',
+  summary: 'Network specifications and information.',
   icon: <i className="icon mr-2 ion-md-pulse mr-1" />,
   colors: { header: 'blue' },
   preview: [],

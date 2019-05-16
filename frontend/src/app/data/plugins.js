@@ -3,7 +3,7 @@ export const data = [{ name: 'userAgent', value: window.navigator.userAgent }];
 
 const pluginsPanel = {
   title: 'Plugins',
-  summary: 'Learn specs of your current device and monitor.',
+  summary: 'Plugins available in your browser and system.',
   icon: <i className="icon mr-2 ion-md-flash mr-1" />,
   colors: { header: 'orangered' },
   preview: [

@@ -21,7 +21,7 @@ const data = [{ name: 'Architecture', value: `${getArch()} bit` }];
 
 const osPanel = {
   title: 'Operating System',
-  summary: 'Learn specs of your current device and monitor.',
+  summary: 'Information about your current Operating System.',
   icon: <i className="icon mr-2 ion-md-cube mr-1" />,
   colors: { header: 'teal' },
   preview: [

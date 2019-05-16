@@ -28,7 +28,7 @@ const data = [
 
 const browserPanel = {
   title: 'Browser',
-  summary: 'Learn specs of your current device and monitor.',
+  summary: 'Information about your current browser.',
   icon: <i className="icon mr-2 ion-md-browsers mr-1" />,
   colors: { header: 'goldenrod' },
   preview: [

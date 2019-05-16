@@ -74,6 +74,7 @@ class Panel extends Component {
           >
             <div
               className="panel-header font-weight-bold nohighlight h5"
+              title={this.props.data.summary}
               style={{
                 color: colors.header,
                 border: 'none',

@@ -22,7 +22,7 @@ const data = [
 
 export const audioPanel = {
   title: 'Audio',
-  summary: 'Learn specs of your current device and monitor.',
+  summary: 'Learn about the audio capabilities of your device.',
   icon: <i className="icon mr-2 ion-md-musical-notes mr-1" />,
   colors: { header: 'olivedrab' },
   preview: [{ name: 'sampleRate', value: audioCtx.sampleRate }],

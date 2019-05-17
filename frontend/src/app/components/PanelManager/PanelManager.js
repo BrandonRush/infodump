@@ -3,11 +3,14 @@ import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Panel from '../Panel/Panel';
+import Notification from '../Notification/Notification';
 
 const PanelContext = React.createContext();
 
-class PanelProvider extends Component {
+class PanelManager extends Component {
   state = {
+    panels: this.props.panels,
+    copied: false,
     selected: '',
     changeSelection: newTitle => {
       if (this.state.selected === newTitle) {
@@ -18,25 +21,14 @@ class PanelProvider extends Component {
     },
   };
 
-  componentDidUpdate() {}
-
-  render() {
-    return (
-      <PanelContext.Provider value={this.state}>
-        {this.props.children}
-      </PanelContext.Provider>
-    );
-  }
-}
-
-class PanelManager extends Component {
-  state = { panels: this.props.panels };
-
   componentDidMount() {}
 
   render() {
     return (
-      <PanelProvider>
+      <PanelContext.Provider value={this.state}>
+        {this.state.copied ? (
+          <Notification body="Copied to clipboard." />
+        ) : null}
         <Container fluid style={{ maxWidth: '1650px' }}>
           <Row className="justify-content-center ">
             {this.state.panels.map((panel, index) => {
@@ -44,7 +36,7 @@ class PanelManager extends Component {
             })}
           </Row>
         </Container>
-      </PanelProvider>
+      </PanelContext.Provider>
     );
   }
 }

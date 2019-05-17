@@ -98,10 +98,8 @@ class Panel extends Component {
               </button>
             </div>
             <div className="panel-body nohighlight">
-              <PanelContainer>{previewList}</PanelContainer>
-              {this.props.data.title === context.selected ? (
-                <PanelContainer>{dataList}</PanelContainer>
-              ) : null}
+              {previewList}
+              {this.props.data.title === context.selected ? dataList : null}
             </div>
           </div>
         )}

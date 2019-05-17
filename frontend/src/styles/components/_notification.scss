@@ -1,0 +1,28 @@
+.notification {
+  position: fixed;
+  top: 10px;
+
+  padding: 8px;
+  z-index: 101;
+  overflow: hidden;
+
+  font-weight: bold;
+  text-align: center;
+
+  background: #88fabd;
+  color: #1b663e;
+  opacity: 0.75;
+
+  box-shadow: map-get($shadows, 'low');
+
+  @keyframes slideDown {
+    0%,
+    100% {
+      transform: translateY(-50px);
+    }
+    10%,
+    90% {
+      transform: translateY(0px);
+    }
+  }
+}

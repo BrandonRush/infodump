@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Notification from '../Notification/Notification';
+
 import classNames from 'classnames';
 
 class PanelItem extends Component {
@@ -9,7 +11,7 @@ class PanelItem extends Component {
     variant: PropTypes.oneOf(['server', 'header', 'spinner']),
   };
 
-  state = { preview: [] };
+  state = { preview: [], copied: false };
 
   getValue(callback) {}
 
@@ -18,28 +20,24 @@ class PanelItem extends Component {
   handleString() {}
 
   copyValue = async event => {
-    event.preventDefault();
-    event.stopPropagation();
-    event.nativeEvent.stopImmediatePropagation();
-
-    try {
-      await navigator.clipboard.writeText(this.fixValue(this.props.data.value));
-      console.log('Async: Copying to clipboard was successful!');
-    } catch (e) {
-      console.error('Async: Could not copy text: ', e);
-    }
+    this.copy(event, this.props.data.value);
   };
 
   copyName = async event => {
+    this.copy(event, this.props.data.name);
+  };
+
+  copy = async (event, target) => {
     event.preventDefault();
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
 
     try {
-      await navigator.clipboard.writeText(this.props.data.name);
+      await navigator.clipboard.writeText(this.fixValue(target));
       console.log('Async: Copying to clipboard was successful!');
+      this.setState({ copied: true });
     } catch (e) {
-      console.error('Async: Could not copy text: ', err);
+      console.error('Async: Could not copy text: ', e);
     }
   };
 
@@ -71,29 +69,35 @@ class PanelItem extends Component {
   };
 
   render() {
-    let value = this.fixValue(this.props.data.value);
+    let value;
+    if (!this.props.variant) {
+      value = this.fixValue(this.props.data.value);
+    }
+
     return (
-      <div className="item">
-        <div className="item-container">
-          <span
-            className="bolder-text item-entry item-entry-name"
-            onClick={this.copyName}
-          >
-            {this.props.data.name}
-          </span>
+      <React.Fragment>
+        <div className="item">
+          <div className="item-container item-container-name">
+            <span
+              className="bolder-text item-entry item-entry-name"
+              onClick={this.copyName}
+            >
+              {this.props.data.name}
+            </span>
+          </div>
+          <div className="item-container item-container-value">
+            <span
+              onClick={this.copyValue}
+              className={classNames('normal-text item-entry item-entry-value', {
+                inactive: value === 'Not Found',
+                'no-support': value === 'No Support',
+              })}
+            >
+              {value}
+            </span>
+          </div>
         </div>
-        <div className="item-container">
-          <span
-            onClick={this.copyValue}
-            className={classNames('normal-text item-entry item-entry-value', {
-              inactive: value === 'Not Found',
-              'no-support': value === 'No Support',
-            })}
-          >
-            {value}
-          </span>
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

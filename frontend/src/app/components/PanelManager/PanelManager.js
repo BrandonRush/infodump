@@ -10,15 +10,17 @@ const PanelContext = React.createContext();
 class PanelManager extends Component {
   state = {
     panels: this.props.panels,
-    copied: false,
+    copied: true,
     selected: '',
-    changeSelection: newTitle => {
-      if (this.state.selected === newTitle) {
-        this.setState({ selected: '' });
-      } else {
-        this.setState({ selected: newTitle });
-      }
-    },
+    changeSelection: newTitle => this.changeSelection(newTitle),
+  };
+
+  changeSelection = newTitle => {
+    if (this.state.selected === newTitle) {
+      this.setState({ selected: '' });
+    } else {
+      this.setState({ selected: newTitle });
+    }
   };
 
   componentDidMount() {}

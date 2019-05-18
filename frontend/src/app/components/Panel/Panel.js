@@ -5,25 +5,16 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import { PanelConsumer } from '../PanelManager/PanelManager';
-import PanelContainer from '../PanelContainer/PanelContainer';
 import PanelItem from '../PanelItem/PanelItem';
 
 class Panel extends Component {
   static propTypes = {
     // colors: PropTypes.object,
     data: PropTypes.object,
-    // description: PropTypes.string,
-    // footer: PropTypes.string,
-    // header: PropTypes.string,
-    // icon: PropTypes.element,
-    // new: PropTypes.bool,
-    // preview: PropTypes.arrayOf(PropTypes.object),
   };
 
   state = {
     selected: false,
-    //  mouseOver: false,
-    //   mouseDown: false
   };
 
   componentDidMount() {}
@@ -54,7 +45,9 @@ class Panel extends Component {
 
     const dataArr = this.props.data.data;
     let dataList = dataArr.map(item => {
-      return <PanelItem data={item} key={item.name} />;
+      if (!item.variant) {
+        return <PanelItem data={item} key={item.name} />;
+      }
     });
 
     return (

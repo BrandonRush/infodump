@@ -1,6 +1,16 @@
+$notification-width: 200px;
+$notification-height: 40px;
+
 .notification {
   position: fixed;
-  top: 10px;
+  top: -40px;
+
+  height: $notification-height;
+  width: $notification-width;
+
+  left: 50%;
+  margin-top: (-$notification-height / 2);
+  margin-left: (-$notification-width / 2);
 
   padding: 8px;
   z-index: 101;
@@ -14,15 +24,18 @@
   opacity: 0.75;
 
   box-shadow: map-get($shadows, 'low');
+  border-radius: $border-radius;
+
+  animation: slideDown 2s;
 
   @keyframes slideDown {
     0%,
     100% {
-      transform: translateY(-50px);
+      transform: translateY(-80px);
     }
     10%,
     90% {
-      transform: translateY(0px);
+      transform: translateY(80px);
     }
   }
 }

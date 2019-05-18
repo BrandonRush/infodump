@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import Notification from '../Notification/Notification';
-
 import classNames from 'classnames';
 
-class PanelItem extends Component {
+import Notification from '../Notification/Notification';
+import PanelItem from '../PanelItem/PanelItem';
+
+class Item extends Component {
   static propTypes = {
     data: PropTypes.object,
     variant: PropTypes.oneOf(['server', 'header', 'spinner', 'collapsible']),
   };
-
-  state = { preview: [], copied: false };
-
-  getValue(callback) {}
-
-  handleFunction() {}
-
-  handleString() {}
 
   copyValue = async event => {
     this.copy(event, this.props.data.value);
@@ -40,8 +32,6 @@ class PanelItem extends Component {
       console.error('Async: Could not copy text: ', e);
     }
   };
-
-  componentDidMount() {}
 
   checkIfEmpty = value => {
     return value || 'Not Found';
@@ -68,6 +58,15 @@ class PanelItem extends Component {
     return this.checkIfEmpty(value);
   };
 
+  state = {};
+
+  render() {
+    <div className="item">{this.props.render(this.state)}</div>;
+  }
+}
+export default Item;
+
+/*
   render() {
     let value;
     if (!this.props.variant) {
@@ -100,4 +99,4 @@ class PanelItem extends Component {
   }
 }
 
-export default PanelItem;
+*/

@@ -66,12 +66,8 @@
 
 .panel-waiting {
   &:active {
-    // transform: translateY(+5px);
-    transform: scale(0.97, 0.97);
-    @include shadowlow;
+    @include pressedDown;
   }
-  // transition: transform 0.3s;
-  transition: box-shadow 0.1s;
 }
 
 @media only screen and (max-width: 862px) {

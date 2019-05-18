@@ -24,3 +24,9 @@
   box-shadow: map-get($shadows, 'high');
   box-shadow: map-get($shadows, 'highspread');
 }
+
+@mixin pressedDown {
+  @include shadowlow;
+  transform: scale(0.98, 0.98) translateY(+5px);
+  transition: box-shadow 0.2s, transform 0.1s;
+}

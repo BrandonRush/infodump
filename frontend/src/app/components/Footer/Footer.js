@@ -12,7 +12,7 @@ const Footer = () => {
           <i className="logo icon ion-logo-github mr-2" />
         </a>
       </div>
-      <div className="signature bold-text">Brandon Rush © 2019 🔥</div>
+      <div className="signature bold-text">Brandon Rush © 2019 ✨</div>
     </footer>
   );
 };

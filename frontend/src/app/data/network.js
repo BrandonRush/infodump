@@ -52,9 +52,9 @@ const getIP_RTC = function() {
 
 const getIP = async () => {
   try {
-    const response = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts/1'
-    );
+    const response = await fetch('http://localhost:8000/ip', {
+      mode: 'no-cors',
+    });
     console.log(response);
     return response.data.title.split(' ')[0];
   } catch (error) {

@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 
 import { PanelConsumer } from '../PanelManager/PanelManager';
 import PanelItem from '../PanelItem/PanelItem';
+import PanelListing from '../PanelListing/PanelListing';
+import PanelFetch from '../PanelFetch/PanelFetch';
 
 class Panel extends Component {
   static propTypes = {
@@ -46,7 +48,21 @@ class Panel extends Component {
     const dataArr = this.props.data.data;
     let dataList = dataArr.map(item => {
       if (!item.variant) {
-        return <PanelItem data={item} key={item.name} />;
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelItem data={data} />}
+          />
+        );
+      } else if (item.variant === 'fetch') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch data={data} />}
+          />
+        );
       }
     });
 

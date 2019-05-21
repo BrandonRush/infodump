@@ -1,0 +1,13 @@
+button {
+  @include shadowhigh;
+  @include pressedDown;
+
+  background: setcolor('normal', 'primary-dark');
+
+  border: none;
+  border-radius: $border-radius;
+  padding: 10px 30px 10px 30px;
+
+  color: setcolor('normal', 'light');
+  font-weight: 600;
+}

@@ -9,10 +9,20 @@ const Footer = () => {
           rel="noreferrer noopener"
           target="_blank"
         >
-          <i className="logo icon ion-logo-github mr-2" />
+          <i className="logo icon ion-logo-github" />
         </a>
       </div>
-      <div className="signature bold-text">Brandon Rush © 2019 ✨</div>
+      <div className="signature bold-text">
+        Brandon Rush © 2019
+        <span
+          onClick={() => console.log('test')}
+          className="canselect nohighlight emoji"
+          role="img"
+          aria-label="Sparkling"
+        >
+          ✨
+        </span>
+      </div>
     </footer>
   );
 };

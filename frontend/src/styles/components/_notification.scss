@@ -12,19 +12,22 @@ $notification-height: 40px;
   margin-top: (-$notification-height / 2);
   margin-left: (-$notification-width / 2);
 
-  padding: 8px;
+  padding: 1px;
   z-index: 101;
   overflow: hidden;
 
   font-weight: bold;
   text-align: center;
+  text-align: center;
+  vertical-align: middle;
+  line-height: $notification-height;
 
   background: #88fabd;
   color: #1b663e;
   opacity: 0.75;
 
-  box-shadow: map-get($shadows, 'low');
-  border-radius: $border-radius;
+  // box-shadow: map-get($shadows, 'low');
+  // border-radius: $border-radius;
 
   animation: slideDown 2s;
 

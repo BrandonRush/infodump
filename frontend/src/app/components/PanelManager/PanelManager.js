@@ -28,9 +28,9 @@ class PanelManager extends Component {
   render() {
     return (
       <PanelContext.Provider value={this.state}>
-        {this.state.copied ? (
+        {/* {this.state.copied ? (
           <Notification body="Copied to clipboard." />
-        ) : null}
+        ) : null} */}
         <Container fluid style={{ maxWidth: '1650px' }}>
           <Row className="justify-content-center ">
             {this.state.panels.map((panel, index) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import platform from 'platform';
+import axios from 'axios';
 
 function getBrowser() {
   return platform.name;

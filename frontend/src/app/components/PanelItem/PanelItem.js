@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
-import Notification from '../Notification/Notification';
-
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class PanelItem extends Component {
   static propTypes = {
     data: PropTypes.object,
-    variant: PropTypes.oneOf(['server', 'header', 'spinner', 'collapsible']),
   };
 
   state = { preview: [], copied: false };
 
-  getValue(callback) {}
+  componentDidMount() {}
 
-  handleFunction() {}
+  createCopyElem = () => {
+    document.querySelectorAll('.notification').forEach(node => {
+      node.parentElement.removeChild(node);
+    });
 
-  handleString() {}
+    const notification = document.createElement('div');
+    notification.innerHTML = 'Copied to clipboard!';
+    notification.classList.add('notification');
+
+    document.body.appendChild(notification);
+  };
 
   copyValue = async event => {
     this.copy(event, this.props.data.value);
@@ -36,12 +41,11 @@ class PanelItem extends Component {
       await navigator.clipboard.writeText(this.fixValue(target));
       console.log('Async: Copying to clipboard was successful!');
       this.setState({ copied: true });
+      this.createCopyElem();
     } catch (e) {
       console.error('Async: Could not copy text: ', e);
     }
   };
-
-  componentDidMount() {}
 
   checkIfEmpty = value => {
     return value || 'Not Found';
@@ -76,17 +80,19 @@ class PanelItem extends Component {
 
     return (
       <div className="item">
-        <div className="item-container item-container-name">
-          <span
-            className="bolder-text item-entry item-entry-name"
-            onClick={this.copyName}
-          >
+        <div
+          className="item-container item-container-name"
+          onClick={this.copyName}
+        >
+          <span className="bolder-text item-entry item-entry-name">
             {this.props.data.name}
           </span>
         </div>
-        <div className="item-container item-container-value">
+        <div
+          className="item-container item-container-value"
+          onClick={this.copyValue}
+        >
           <span
-            onClick={this.copyValue}
             className={classNames('normal-text item-entry item-entry-value', {
               inactive: value === 'Not Found',
               'no-support': value === 'No Support',

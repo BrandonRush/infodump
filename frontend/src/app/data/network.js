@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const getIP_RTC = function() {
   var myPeerConnection =
@@ -49,10 +50,23 @@ const getIP_RTC = function() {
   };
 };
 
+const getIP = async () => {
+  try {
+    const response = await axios.get(
+      'https://jsonplaceholder.typicode.com/posts/1'
+    );
+    console.log(response);
+    return response.data.title.split(' ')[0];
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const connection =
   navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
 const data = [
+  { name: 'IP Address (HTTP Header)', value: getIP, variant: 'fetch' },
   {
     name: 'API Support',
     value: connection?.effectiveType ?? 'No Support',

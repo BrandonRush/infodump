@@ -17,6 +17,9 @@ class Header extends Component {
             >
               <i className="icon ion-md-information-circle mr-2" />
               infodump
+              {/* <span className="tiny-text theme-switch" role="img">
+                🌗
+              </span> */}
             </div>
           </div>
           <div className="col-sm text-center text-light font-weight-normal" />

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders without unexpected changes 1`] = `
+<div
+  className="p-5 mt-5 transparent nohighlight container-fluid"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm text-center text-light"
+    />
+    <div
+      className="col-sm text-center text-light h1 font-weight-bold"
+    >
+      <div
+        className="noselect canselect text-light title"
+        href="/#"
+        role="link"
+        style={
+          Object {
+            "cursorDecoration": "none",
+          }
+        }
+      >
+        <i
+          className="icon ion-md-information-circle mr-2"
+        />
+        infodump
+      </div>
+    </div>
+    <div
+      className="col-sm text-center text-light font-weight-normal"
+    />
+  </div>
+</div>
+`;

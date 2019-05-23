@@ -11,7 +11,7 @@ matrix:
       script:
         - yarn
         - yarn test
-        - npm run build:dev
+        - yarn run build:dev
     # - language: python
     #   python: 3.6
     #   install:

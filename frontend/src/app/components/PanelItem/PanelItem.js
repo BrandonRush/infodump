@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
+import Notification from '../Notification/Notification';
+
 class PanelItem extends Component {
   static propTypes = {
     data: PropTypes.object,
@@ -22,6 +24,10 @@ class PanelItem extends Component {
     notification.classList.add('notification');
 
     document.body.appendChild(notification);
+    // ReactDOM.createPortal(
+    //   <Notification body="Copied to clipboard." />,
+    //   document.getElementById('root')
+    // );
   };
 
   copyValue = async event => {

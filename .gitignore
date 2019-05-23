@@ -15,6 +15,7 @@ build
 
 # Runtime data
 database.sqlite
+*.sqlite3
 
 # Test coverage
 coverage

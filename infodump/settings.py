@@ -25,7 +25,7 @@ SECRET_KEY = '7gsfpsyxs&p+4a*cr^7_i@=x%esekk!$*3_$#h^81y)+cd17a^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['infodump.io', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'infodump.cors.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'infodump.urls'

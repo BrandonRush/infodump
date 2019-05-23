@@ -9,6 +9,7 @@ matrix:
           - node_modules
       before_script: cd frontend
       script:
+        - yarn
         - yarn test
         - npm run build:dev
     # - language: python

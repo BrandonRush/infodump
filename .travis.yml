@@ -1,29 +1,25 @@
 matrix:
   include:
-  - language: node_js
-    node_js:
-    - stable
-    cache:
-      bundle: yarn
-      directories:
-      - node_modules
-    before_script: cd frontend
-    jobs:
-      include:
-      - stage: Unit Tests
-        script: yarn test
-      - stage: Build
-      - script: yarn run build:prod
-      - stage: Deploy
-        deploy:
-          provider: s3
-          access_key_id: "$AWS_ACCESS_KEY_ID"
-          secret_access_key: "$AWS_SECRET_ACCESS_KEY"
-          bucket: www.infodump.io
-          skip_cleanup: true
-          region: us-east-2
-          local-dir: build
-env:
-  matrix:
-  - secure: PggB4DhqpPk3Zkzu5xMndpEQJn4O7J3TzXvxRTi7rtAoeIoiJ0lxuHybkvE6D5PhnNygA6ZrHMHPAuObEKMS8816SlA2Jtsq3sJMHTygyr+2Wr1t1etBw56oNRNG0VXKdtReSQaaV4oDf6ZIQ4FXKOnFScRvK4VfpzEH+Qi40/WYnZlrCMdXPQbBZ6DT7EUdz5oaPfT95QvoApeCrBRtdeKigvgqw+6v5d1Efkwn16f6tG1TM6CXY1Q8CPjgMpBVMW/gXQW91bFS2NJXtbRmrc9cwRAgqDAbAj8w5s3HDTscjt55E6UqVtUJEu6JqzAQ0NfrtwyVwayuxEKGF0Qd5UjtoMb1UQmtTm1UCvpwGPR/jSL4AX5bvT1ZtsLXgCzwIP3NeUIhL0VMYNxNl+Iv49/dt7ii/wjNx8Jlz1TJlgCfZo0C5aeU92Gp+1iSwhCFa0EMY1ZQ7znmI32AD/3Efz6yNTkW5nAn2j0+gC7fjpAI0FaVZKVoRqjH6RYg+tYSPm0mLkn9L6CIVJgC7aZDmKdFpvccWD8LOXqWkyMnAO0rMy63SCDCmCI867FpDLRg/+MJpRSnPejFOUHgBhMcN6Y4UWzhFCjdUbTVSmARs2VTUfRf1vdOFDMEIXVbG4U3XsvtdMJich+5PTaA27+nSpFl+RB1S5vNFQcGozuDmFc=
-  - secure: gp7+ExLCcJCj0mPP1CVS0XxdveNCk9MMZ/j2YfRJ8ZHO6KJx1oW41MGLjulQvZZ4Pt+x6HIyDoZv9vFgzy3nAANE/e3Z/HY1riY1nfm5OMPGEjlDMpEit33BrGHRjkjgNMuyB5UlXbRKufvMJCsk/BlCQ/0wIKgEJsjJGbsD5bv+jAdibzp9V4G6vd/hnSLosP+j3Lck1Jb7UaJ5wLqVm86O1DoZB8Q8z8pC8T4qzX0uRO9JSufqW9X4/5s3L7z7qox/9iZdQi/b5AASzxjVwEsgUmxxlzQh2ZznXxfNNZM9NK8Q225t5EBRI0wjv35MaBrNSNT062XSVYGnaWg910OilVm/ELIYwGjV984ricmUiRSXei6gNu9hVF62JwhLCFqAcftKB+IshXIAEkPkcG8qfCCGWmneihJCH2DqvUEQdLYWsjOeTwUDYfI7/R5ni/vwM6drj64GUpSZMY7wfhOVlxcq32OfH/ZfQn2/S6i0eGBl2cWlY5JQKdlR++dFSiKB/A5EUPZZddmSv66xbD/UklY6s/TQMqrw1ciq89xYxhKqP7jYyGrmlvkI3GvfMVbz0CAQ68WP4pFTXbuRCYwUEgS7J43VhbQiIewRv5Ztz8K2WvmVvZiXUrXfSa/Sp/gLYJHSrhQ2JWP3/hL1GdTvJ3/hPqV56lEX4USkybs=
+    - language: node_js
+      node_js:
+        - stable
+      cache:
+        bundle: yarn
+        directories:
+          - node_modules
+      before_script: cd frontend
+      jobs:
+        include:
+          - stage: Unit Tests
+            script: yarn test
+          - stage: Build
+          - script: yarn run build:prod
+          - stage: Deploy
+            deploy:
+              provider: s3
+              access_key_id: '$AWS_ACCESS_KEY_ID'
+              secret_access_key: '$AWS_SECRET_ACCESS_KEY'
+              bucket: www.infodump.io
+              skip_cleanup: true
+              region: us-east-2
+              local-dir: build

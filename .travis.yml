@@ -15,11 +15,11 @@ matrix:
         - yarn install
       jobs:
         include:
-          - stage: Unit Tests
+          # - stage: Unit Tests
             script: yarn test
-          - stage: Build
+          # - stage: Build
           - script: yarn run build:prod
-          - stage: Deploy
+            # - stage: Deploy
             deploy:
               provider: s3
               access_key_id: $AWS_ACCESS_KEY_ID

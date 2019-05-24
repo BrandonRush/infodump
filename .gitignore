@@ -5,6 +5,9 @@
 *.ico
 *.svg
 
+# Whitelist Assets
+!favicon.png
+
 
 # Dependencies
 node_modules/

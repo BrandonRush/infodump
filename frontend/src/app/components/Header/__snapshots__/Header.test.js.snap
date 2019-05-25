@@ -8,10 +8,10 @@ exports[`Header renders without unexpected changes 1`] = `
     className="row"
   >
     <div
-      className="col-sm text-center text-light"
+      className="col-sm text-center"
     />
     <div
-      className="col-sm text-center text-light h1 font-weight-bold"
+      className="col-sm text-center h1 "
     >
       <div
         className="noselect canselect text-light title"

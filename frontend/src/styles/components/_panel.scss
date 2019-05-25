@@ -58,12 +58,6 @@
   z-index: 99;
 }
 
-.panel-leftover {
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.4s;
-}
-
 .panel-waiting {
   &:active {
     @include pressedDown;

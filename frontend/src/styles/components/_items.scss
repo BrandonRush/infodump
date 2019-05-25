@@ -33,11 +33,11 @@
 
     .panel-clicked & {
       &:not(.nohover):active {
-        background: setcolor('normal', 'success');
+        background: setcolor('elements', 'success');
 
         & > .item-entry {
           &:not(.inactive):not(.no-support) {
-            color: setcolor('normal', 'success-foreground');
+            color: setcolor('elements', 'success-foreground');
           }
           transition: color 0.2s;
         }

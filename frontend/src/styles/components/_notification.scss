@@ -22,8 +22,9 @@ $notification-height: 40px;
   vertical-align: middle;
   line-height: $notification-height;
 
-  background: #88fabd;
-  color: #1b663e;
+  background: setcolor('elements', 'copied');
+  color: setcolor('elements', 'copied-foreground');
+
   opacity: 0.75;
 
   // box-shadow: map-get($shadows, 'low');

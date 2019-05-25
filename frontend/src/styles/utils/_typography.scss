@@ -8,16 +8,16 @@
   color: setcolor('normal', 'dark');
 
   &.inactive {
-    color: setcolor('normal', 'warning-foreground');
-    background-color: setcolor('normal', 'warning');
+    color: setcolor('elements', 'warning-foreground');
+    background-color: setcolor('elements', 'warning');
     border-radius: $border-radius;
     padding: 2px 8px 2px 8px;
     font-weight: 600;
   }
 
   &.no-support {
-    color: setcolor('normal', 'error-foreground');
-    background-color: setcolor('normal', 'error');
+    color: setcolor('elements', 'error-foreground');
+    background-color: setcolor('elements', 'error');
     border-radius: $border-radius;
     padding: 2px 8px 2px 8px;
     font-weight: 600;

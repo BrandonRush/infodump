@@ -15,7 +15,6 @@ const Footer = () => {
       <div className="signature bold-text">
         Brandon Rush © 2019
         <span
-          onClick={() => console.log('test')}
           className="canselect nohighlight emoji"
           role="img"
           aria-label="Sparkling"

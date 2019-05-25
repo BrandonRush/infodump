@@ -1,26 +1,28 @@
+language: node_js
+node_js:
+  - stable
 branches:
   only:
     - master
-matrix:
-  include:
-    - language: node_js
-      node_js:
-        - stable
-      cache:
-        bundle: yarn
-        directories:
-          - node_modules
-      before_script:
-        - cd frontend
-        - yarn install
-      script:
-        - yarn test
-        - yarn run build:prod
-      deploy:
-        provider: s3
-        access_key_id: $AWS_ACCESS_KEY_ID
-        secret_access_key: $AWS_SECRET_ACCESS_KEY
-        bucket: www.infodump.io
-        skip_cleanup: true
-        region: $S3_REGION
-        local-dir: build
+cache:
+  yarn: true
+before_script:
+  - cd frontend
+install:
+  - yarn install
+  - pip install awscli
+script:
+  - yarn test
+  - yarn run build:prod
+before_deploy:
+  - aws s3 rm s3://www.infodump.io --recursive --region $S3_REGION
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: www.infodump.io
+  skip_cleanup: true
+  region: $S3_REGION
+  local-dir: build
+after_deploy:
+  - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths /*

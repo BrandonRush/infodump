@@ -72,8 +72,6 @@ class Panel extends Component {
           <div
             className={classNames('panel m-4 p-0 col-3 canselect', {
               'panel-waiting': context.selected === '',
-              'panel-leftover ':
-                this.props.data.title !== context.selected && context.selected,
               'panel-clicked': this.props.data.title === context.selected,
             })}
             onClick={() => {

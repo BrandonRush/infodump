@@ -3,7 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import Panel from '../Panel/Panel';
-import Notification from '../Notification/Notification';
+import SearchBar from '../SearchBar/SearchBar';
 
 const PanelContext = React.createContext();
 
@@ -23,19 +23,23 @@ class PanelManager extends Component {
     }
   };
 
-  componentDidMount() {}
-
   render() {
+    let selectedPanel = this.state.selected
+      ? this.state.panels.find(panel => this.state.selected === panel.title)
+      : null;
+
     return (
       <PanelContext.Provider value={this.state}>
-        {/* {this.state.copied ? (
-          <Notification body="Copied to clipboard." />
-        ) : null} */}
-        <Container fluid style={{ maxWidth: '1650px' }}>
+        {/* <SearchBar /> */}
+        <Container fluid style={{ maxWidth: '1450px' }}>
           <Row className="justify-content-center ">
-            {this.state.panels.map((panel, index) => {
-              return <Panel key={panel.title} data={panel} />;
-            })}
+            {!this.state.selected ? (
+              this.state.panels.map(panel => {
+                return <Panel key={panel.title} data={panel} />;
+              })
+            ) : (
+              <Panel key={selectedPanel.title} data={selectedPanel} />
+            )}
           </Row>
         </Container>
       </PanelContext.Provider>

@@ -1,0 +1,41 @@
+// Selection transition
+.selected-fade-enter,
+.selected-fade-appear {
+  opacity: 0;
+}
+
+.selected-fade-enter-active,
+.selected-fade-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms 100ms;
+}
+
+.selected-fade-exit {
+  opacity: 1;
+}
+
+.selected-fade-exit-active {
+  opacity: 0;
+  transition: opacity 3000ms;
+}
+
+// Panel transition
+.panel-fade-enter,
+.panel-fade-appear {
+  opacity: 0;
+}
+
+.panel-fade-enter-active,
+.panel-fade-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.panel-fade-exit {
+  opacity: 1;
+}
+
+.panel-fade-exit-active {
+  opacity: 0;
+  transition: opacity 2000ms;
+}

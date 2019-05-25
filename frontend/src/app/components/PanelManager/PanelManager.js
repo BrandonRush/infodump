@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Panel from '../Panel/Panel';
 import SearchBar from '../SearchBar/SearchBar';
@@ -35,10 +36,28 @@ class PanelManager extends Component {
           <Row className="justify-content-center ">
             {!this.state.selected ? (
               this.state.panels.map(panel => {
-                return <Panel key={panel.title} data={panel} />;
+                return (
+                  <CSSTransition
+                    appear
+                    in={this.state.selected === ''}
+                    classNames="panel-fade"
+                    timeout={2000}
+                    key={panel.title}
+                  >
+                    <Panel key={panel.title} data={panel} />
+                  </CSSTransition>
+                );
               })
             ) : (
-              <Panel key={selectedPanel.title} data={selectedPanel} />
+              <CSSTransition
+                appear
+                in={this.state.selected !== ''}
+                classNames="selected-fade"
+                timeout={4000}
+                key={selectedPanel.title + ':selected'}
+              >
+                <Panel key={selectedPanel.title} data={selectedPanel} />
+              </CSSTransition>
             )}
           </Row>
         </Container>

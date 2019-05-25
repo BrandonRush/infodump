@@ -6,11 +6,14 @@ branches:
     - master
 cache:
   yarn: true
+  directories:
+    - $HOME/.local
+    - node_modules
 before_script:
   - cd frontend
 install:
   - yarn install
-  - pip install awscli
+  - pip install --user awscli
 script:
   - yarn test
   - yarn run build:prod

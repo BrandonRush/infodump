@@ -9,7 +9,7 @@ cache:
   directories:
     - $HOME/.local
     - node_modules
-before_script:
+before_install:
   - cd frontend
 install:
   - yarn install

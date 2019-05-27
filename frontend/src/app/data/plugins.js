@@ -8,8 +8,8 @@ const pluginsPanel = {
   colors: { header: 'orangered' },
   preview: [
     {
-      name: 'userAgent',
-      value: window.navigator.userAgent,
+      name: 'Plugin Count',
+      value: navigator.plugins.length,
     },
   ],
   data: data,

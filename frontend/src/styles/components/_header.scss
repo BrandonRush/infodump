@@ -1,7 +1,16 @@
 .title {
   color: setcolor('normal', 'logo') !important;
+  white-space: nowrap;
 }
 
 .theme-switch {
   margin-left: 10px;
+}
+
+#info {
+}
+
+#dump {
+  color: lighten(setcolor('normal', 'logo'), 5%);
+  font-weight: 400;
 }

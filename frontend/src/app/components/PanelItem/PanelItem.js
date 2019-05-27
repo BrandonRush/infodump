@@ -10,9 +10,7 @@ class PanelItem extends Component {
     data: PropTypes.object,
   };
 
-  state = { preview: [], copied: false };
-
-  componentDidMount() {}
+  state = { copied: false };
 
   createCopyElem = () => {
     document.querySelectorAll('.notification').forEach(node => {
@@ -24,10 +22,6 @@ class PanelItem extends Component {
     notification.classList.add('notification');
 
     document.body.appendChild(notification);
-    // ReactDOM.createPortal(
-    //   <Notification body="Copied to clipboard." />,
-    //   document.getElementById('root')
-    // );
   };
 
   copyValue = async event => {
@@ -107,7 +101,7 @@ class PanelItem extends Component {
             {value}
           </span>
         </div>
-      </div>
+      </article>
     );
   }
 }

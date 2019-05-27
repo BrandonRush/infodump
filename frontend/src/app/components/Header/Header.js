@@ -14,7 +14,8 @@ const Header = () => {
             style={{ cursorDecoration: 'none' }}
           >
             <i className="icon ion-md-information-circle mr-2" />
-            infodump
+            <span id="info">info</span>
+            <span id="dump">dump</span>
             {/* <span className="tiny-text theme-switch" role="img">
                 🌗
               </span> */}

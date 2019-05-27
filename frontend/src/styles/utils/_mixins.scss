@@ -26,7 +26,12 @@
 }
 
 @mixin pressedDown {
-  @include shadowlow;
+  @include shadowverylow;
   transform: scale(0.98, 0.98) translateY(+5px);
   transition: box-shadow 0.2s, transform 0.1s;
+}
+
+@mixin hovering {
+  transform: scale(1.01, 1.01) translateY(-2px);
+  transition: box-shadow 0.5s, transform 0.4s;
 }

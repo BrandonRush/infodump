@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { sortableContainer, sortableElement } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 
 import Panel from '../Panel/Panel';
 import SearchBar from '../SearchBar/SearchBar';
 
 const PanelContext = React.createContext();
+
+const SortableItem = sortableElement(({ children }) => (
+  <div className="panel-container">{children}</div>
+));
+
+const SortableContainer = sortableContainer(({ children }) => {
+  return (
+    <div className="row justify-content-center" style={{ maxWidth: '1450px' }}>
+      {children}
+    </div>
+  );
+});
 
 class PanelManager extends Component {
   state = {
@@ -24,6 +37,12 @@ class PanelManager extends Component {
     }
   };
 
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ panels }) => ({
+      panels: arrayMove(panels, oldIndex, newIndex),
+    }));
+  };
+
   render() {
     let selectedPanel = this.state.selected
       ? this.state.panels.find(panel => this.state.selected === panel.title)
@@ -31,21 +50,33 @@ class PanelManager extends Component {
 
     return (
       <PanelContext.Provider value={this.state}>
-        {/* <SearchBar /> */}
-        <Container fluid style={{ maxWidth: '1450px' }}>
-          <Row className="justify-content-center ">
+        <main
+          className="container container-fluid"
+          style={{ maxWidth: '1450px' }}
+        >
+          {!this.state.selected && <SearchBar />}
+          <SortableContainer
+            axis="xy"
+            onSortEnd={this.onSortEnd}
+            // distance={25}
+            pressDelay={200}
+            lockToContainerEdges
+          >
             {!this.state.selected ? (
-              this.state.panels.map(panel => {
+              this.state.panels.map((panel, index) => {
                 return (
-                  <CSSTransition
-                    appear
-                    in={this.state.selected === ''}
-                    classNames="panel-fade"
-                    timeout={2000}
-                    key={panel.title}
-                  >
-                    <Panel key={panel.title} data={panel} />
-                  </CSSTransition>
+                  <SortableItem key={panel.title} index={index}>
+                    <CSSTransition
+                      appear
+                      in={this.state.selected === ''}
+                      classNames="panel-fade"
+                      timeout={2000}
+                      helperClass="panel-dragging"
+                      key={panel.title}
+                    >
+                      <Panel key={panel.title} data={panel} />
+                    </CSSTransition>
+                  </SortableItem>
                 );
               })
             ) : (
@@ -59,8 +90,8 @@ class PanelManager extends Component {
                 <Panel key={selectedPanel.title} data={selectedPanel} />
               </CSSTransition>
             )}
-          </Row>
-        </Container>
+          </SortableContainer>
+        </main>
       </PanelContext.Provider>
     );
   }

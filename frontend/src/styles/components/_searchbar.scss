@@ -1,0 +1,123 @@
+.search {
+  @include shadowverylow;
+  width: 1296px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @media only screen and (max-width: 1296px) {
+    & {
+      width: 848px;
+    }
+  }
+
+  @media only screen and (max-width: 848px) {
+    & {
+      width: 90vw;
+    }
+  }
+
+  .search-bar {
+    border-radius: $border-radius;
+    background: #fff;
+    display: flex;
+    height: 64px;
+    width: 100%;
+    align-items: center;
+    cursor: text;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.or…098.742%200%2054.855-43.762%2098.742-98.462%2098.742z%22%2F%3E%3C%2Fsvg%3E)
+        center center/32px 32px no-repeat;
+      height: 32px;
+      width: 32px;
+      background-position: center center;
+      flex: 0 0 64px;
+      width: 64px;
+      order: 2;
+      text-decoration: inherit;
+    }
+  }
+
+  input {
+    padding: 16px;
+    height: 64px;
+    background: 0 0;
+    border: 0;
+    flex: 1 1 auto;
+    padding-left: 0;
+    font-weight: 700;
+    color: #111;
+    min-width: 48px;
+  }
+}
+
+input {
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  background-color: white !important;
+  cursor: text;
+  transition: 0.5s;
+  width: 100%;
+
+  &::placeholder {
+    color: setcolor('normal', 'logo');
+    font-weight: 300;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.prefix {
+  font-size: 13px;
+  display: block;
+  color: rgba(102, 119, 136, 0.5);
+  font-weight: 400;
+  user-select: none;
+  line-height: 1.5em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(241, 243, 245, 0.5);
+  margin: 0 0 0 16px;
+  box-shadow: 0 1px 1px rgba(102, 119, 136, 0.25);
+}
+
+.search-bar > .sep {
+  color: rgba(102, 119, 136, 0.5);
+  font-size: 17px;
+  margin: 8px;
+}
+
+.search-bar > .prefix {
+  font-size: 13px;
+  display: block;
+  color: rgba(102, 119, 136, 0.5);
+  font-weight: 400;
+  user-select: none;
+  line-height: 1.5em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(241, 243, 245, 0.5);
+  margin: 0 0 0 16px;
+  box-shadow: 0 1px 1px rgba(102, 119, 136, 0.25);
+}
+
+label {
+  margin: 0 !important;
+}

@@ -13,10 +13,8 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Container fluid>
-          <Header />
-          <PanelManager panels={data} />
-        </Container>
+        <Header />
+        <PanelManager panels={data} />
         <Footer />
       </React.Fragment>
     );

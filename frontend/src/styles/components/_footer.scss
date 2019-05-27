@@ -1,9 +1,10 @@
 .footer {
   @include flex-container-center(column);
-  position: absolute;
+  position: static;
   bottom: 0;
   width: 100%;
   height: 50px;
+  z-index: 1;
 }
 
 .signature {

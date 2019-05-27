@@ -85,7 +85,7 @@ class PanelItem extends Component {
     }
 
     return (
-      <div className="item">
+      <article className="item">
         <div
           className="item-container item-container-name"
           onClick={this.copyName}

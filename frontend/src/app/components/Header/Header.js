@@ -1,10 +1,9 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
 
 const Header = () => {
   return (
-    <Container fluid className="p-5 mt-5 transparent nohighlight">
-      <Row>
+    <header className="container container-fluid p-5 mt-5 transparent nohighlight">
+      <div className="row">
         <div className="col-sm text-center" />
         <div className="col-sm text-center h1 ">
           <div
@@ -22,8 +21,8 @@ const Header = () => {
           </div>
         </div>
         <div className="col-sm text-center text-light font-weight-normal" />
-      </Row>
-    </Container>
+      </div>
+    </header>
   );
 };
 

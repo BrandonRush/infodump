@@ -69,8 +69,8 @@ class Panel extends Component {
     return (
       <PanelConsumer>
         {context => (
-          <div
-            className={classNames('panel m-4 p-0 col-3 canselect', {
+          <section
+            className={classNames('panel canselect', {
               'panel-waiting': context.selected === '',
               'panel-clicked': this.props.data.title === context.selected,
             })}
@@ -79,7 +79,7 @@ class Panel extends Component {
                 context.changeSelection(this.props.data.title);
             }}
           >
-            <div
+            <h5
               className="panel-header font-weight-bold nohighlight h5"
               title={this.props.data.summary}
               style={{
@@ -103,12 +103,12 @@ class Panel extends Component {
               >
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
+            </h5>
             <div className="panel-body nohighlight">
               {previewList}
               {this.props.data.title === context.selected ? dataList : null}
             </div>
-          </div>
+          </section>
         )}
       </PanelConsumer>
     );

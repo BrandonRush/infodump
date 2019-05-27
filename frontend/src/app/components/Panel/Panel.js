@@ -101,7 +101,7 @@ class Panel extends Component {
                   context.changeSelection(this.props.data.title);
                 }}
               >
-                <span aria-hidden="true">&times;</span>
+                <i className="icon mr-2 ion-md-close" />
               </button>
             </h5>
             <div className="panel-body nohighlight">

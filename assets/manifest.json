@@ -1,6 +1,6 @@
 {
-  "short_name": "React Skeleton",
-  "name": "React/Redux App Skeleton",
+  "short_name": "infodump",
+  "name": "infodump.io",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#858dc5",
+  "background_color": "#e7eaf6"
 }

@@ -7,7 +7,13 @@ class SearchBar extends Component {
         <label className="search-bar">
           <span className="prefix">infodump.io</span>
           <span className="sep">/</span>
-          <input type="text" placeholder="Search..." />
+          <input
+            autoFocus
+            value={this.props.value}
+            onChange={this.props.onChange}
+            type="text"
+            placeholder="Search..."
+          />
         </label>
       </form>
     );

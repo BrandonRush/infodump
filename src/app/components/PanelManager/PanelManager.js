@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
+import Fuse from 'fuse.js';
 
 import Panel from '../Panel/Panel';
 import SearchBar from '../SearchBar/SearchBar';
@@ -22,10 +23,13 @@ const SortableContainer = sortableContainer(({ children }) => {
 });
 
 class PanelManager extends Component {
+  _searchOptions = { keys: ['title', 'summary'] };
+
   state = {
     panels: this.props.panels,
     copied: true,
     selected: '',
+    searchQuery: '',
     changeSelection: newTitle => this.changeSelection(newTitle),
   };
 
@@ -43,6 +47,13 @@ class PanelManager extends Component {
     }));
   };
 
+  handleSearch = e => {
+    this.setState({ searchQuery: e.target.value });
+    let searchList = new Fuse(this.state.panels, this._searchOptions);
+    let results = searchList.search(e.target.value);
+    this.setState({ panels: results });
+  };
+
   render() {
     let selectedPanel = this.state.selected
       ? this.state.panels.find(panel => this.state.selected === panel.title)
@@ -54,7 +65,12 @@ class PanelManager extends Component {
           className="container container-fluid"
           style={{ maxWidth: '1450px' }}
         >
-          {!this.state.selected && <SearchBar />}
+          {!this.state.selected && (
+            <SearchBar
+              value={this.state.searchQuery}
+              onChange={this.handleSearch}
+            />
+          )}
           <SortableContainer
             axis="xy"
             onSortEnd={this.onSortEnd}

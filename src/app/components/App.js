@@ -12,11 +12,11 @@ import data from '../data/';
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <>
         <Header />
         <PanelManager panels={data} />
         <Footer />
-      </React.Fragment>
+      </>
     );
   }
 }

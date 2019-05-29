@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { Spinner } from 'react-bootstrap';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 

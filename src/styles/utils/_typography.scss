@@ -6,22 +6,6 @@
 .normal-text {
   font-weight: 500;
   color: setcolor('normal', 'dark');
-
-  &.inactive {
-    color: setcolor('elements', 'warning-foreground');
-    background-color: setcolor('elements', 'warning');
-    border-radius: $border-radius;
-    padding: 2px 8px 2px 8px;
-    font-weight: 600;
-  }
-
-  &.no-support {
-    color: setcolor('elements', 'error-foreground');
-    background-color: setcolor('elements', 'error');
-    border-radius: $border-radius;
-    padding: 2px 8px 2px 8px;
-    font-weight: 600;
-  }
 }
 
 .bold-text {
@@ -32,4 +16,9 @@
 .bolder-text {
   font-weight: 700;
   color: setcolor('normal', 'dark');
+}
+
+.logo-text {
+  font-size: 3rem;
+  white-space: nowrap;
 }

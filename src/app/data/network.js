@@ -52,11 +52,17 @@ const getIP_RTC = function() {
 
 const getIP = async () => {
   try {
-    const response = await fetch('http://localhost:8000/ip', {
-      mode: 'no-cors',
-    });
-    console.log(response);
-    return response.data.title.split(' ')[0];
+    const response = await fetch('http://localhost:8000/ip');
+    return await response.text();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const getUserAgent = async () => {
+  try {
+    const response = await fetch('http://localhost:8000/useragent');
+    return await response.text();
   } catch (error) {
     console.error(error);
   }
@@ -66,7 +72,7 @@ const connection =
   navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
 const data = [
-  { name: 'IP Address (HTTP Header)', value: getIP, variant: 'fetch' },
+  { name: 'User Agent (HTTP Header)', value: getUserAgent, variant: 'fetch' },
   {
     name: 'API Support',
     value: connection?.effectiveType ?? 'No Support',
@@ -94,7 +100,7 @@ const networkPanel = {
   summary: 'Network specifications and information.',
   icon: <i className="icon mr-2 ion-md-pulse mr-1" />,
   colors: { header: 'blue' },
-  preview: [],
+  preview: [{ name: 'IP Address', value: getIP, variant: 'auto' }],
   data: data,
 };
 export default networkPanel;

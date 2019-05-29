@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import Notification from '../Notification/Notification';
+import Badge from '../Badge/Badge';
 
 class PanelItem extends Component {
   static propTypes = {
@@ -11,6 +12,11 @@ class PanelItem extends Component {
   };
 
   state = { copied: false };
+
+  sanitize = data => {
+    const sanitizedData = data.trim().replace(/\"/g, '');
+    return sanitizedData;
+  };
 
   createCopyElem = () => {
     document.querySelectorAll('.notification').forEach(node => {
@@ -51,12 +57,26 @@ class PanelItem extends Component {
     return value || 'Not Found';
   };
 
+  checkBadge = value => {
+    if (value === 'Not Found' || value === 'No Support') {
+      return <Badge body={value} />;
+    }
+  };
+
+  checkIfBadge = value => {
+    if (value === 'Not Found' || value === 'No Support') {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   fixValue = elem => {
     let value = do {
       if (typeof elem === 'function') {
         value = elem();
       } else if (typeof elem === 'string') {
-        value = elem;
+        value = this.sanitize(elem);
       } else if (typeof elem === 'number') {
         value = elem;
       } else if (typeof elem === 'boolean') {
@@ -73,10 +93,7 @@ class PanelItem extends Component {
   };
 
   render() {
-    let value;
-    if (!this.props.variant) {
-      value = this.fixValue(this.props.data.value);
-    }
+    let value = this.fixValue(this.props.data.value);
 
     return (
       <article className="item">
@@ -92,14 +109,7 @@ class PanelItem extends Component {
           className="item-container item-container-value"
           onClick={this.copyValue}
         >
-          <span
-            className={classNames('normal-text item-entry item-entry-value', {
-              inactive: value === 'Not Found',
-              'no-support': value === 'No Support',
-            })}
-          >
-            {value}
-          </span>
+          {<Badge body={value} />}
         </div>
       </article>
     );

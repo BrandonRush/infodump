@@ -29,21 +29,33 @@ class Panel extends Component {
     };
 
     const previewArr = this.props.data.preview;
-    let previewList = !this.props.data.preview ? (
-      <div className="align-items-center">
-        <Spinner
-          animation="border"
-          role="status"
-          style={{ color: colors.header }}
-        >
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      </div>
-    ) : (
-      previewArr.map(item => {
-        return <PanelItem data={item} key={item.name} />;
-      })
-    );
+    let previewList = previewArr.map(item => {
+      if (!item.variant) {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelItem data={data} />}
+          />
+        );
+      } else if (item.variant === 'fetch') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch data={data} />}
+          />
+        );
+      } else if (item.variant === 'auto') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch auto data={data} />}
+          />
+        );
+      }
+    });
 
     const dataArr = this.props.data.data;
     let dataList = dataArr.map(item => {
@@ -61,6 +73,14 @@ class Panel extends Component {
             key={item.name}
             data={item}
             render={data => <PanelFetch data={data} />}
+          />
+        );
+      } else if (item.variant === 'auto') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch auto data={data} />}
           />
         );
       }

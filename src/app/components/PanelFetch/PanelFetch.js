@@ -6,13 +6,26 @@ import { Spinner } from 'react-bootstrap';
 import PanelItem from '../PanelItem/PanelItem';
 
 class PanelFetch extends Component {
+  _mounted = false;
+
   static propTypes = {
     data: PropTypes.object,
   };
 
   state = { value: null, fetching: false };
 
-  componentDidMount() {}
+  async componentDidMount() {
+    this._mounted = true;
+    if (this.props.auto) {
+      if (this._mounted) {
+        await this.fetchValue();
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
+  }
 
   checkIfEmpty = value => {
     return value || 'Not Found';
@@ -34,13 +47,17 @@ class PanelFetch extends Component {
         </div>
         <div className="item-container item-container-value item-container-button nohover">
           <span className="normal-text item-entry item-entry-value item-entry-button">
-            {this.state.fetching ? (
+            {this.state.fetching && (
               <Spinner animation="border" role="status" />
-            ) : (
+            )}
+
+            {!this.state.fetching && !this.props.auto && (
               <button aria-label="Run" onClick={this.fetchValue}>
                 {this.state.fetching ? 'Loading' : 'Run Test'}
               </button>
             )}
+
+            {!this.state.fetching && this.props.auto && this.state.value}
           </span>
         </div>
       </div>

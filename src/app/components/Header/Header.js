@@ -2,14 +2,14 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header className="container container-fluid p-5 mt-5 transparent nohighlight">
+    <header className="container container-fluid p-5 transparent nohighlight">
       <div className="row">
         <div className="col-sm text-center" />
         <div className="col-sm text-center h1 ">
           <div
             href="/#"
             role="link"
-            className="noselect canselect text-light title"
+            className="noselect canselect title logo-text"
             style={{ cursorDecoration: 'none' }}
           >
             <i className="icon ion-md-information-circle mr-2" />

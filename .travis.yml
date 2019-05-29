@@ -9,8 +9,6 @@ cache:
   directories:
     - $HOME/.local
     - node_modules
-before_install:
-  - cd frontend
 install:
   - yarn install
   - pip install --user awscli

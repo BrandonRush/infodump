@@ -2,7 +2,7 @@
 
 exports[`Header renders without unexpected changes 1`] = `
 <header
-  className="container container-fluid p-5 mt-5 transparent nohighlight"
+  className="container container-fluid p-5 transparent nohighlight"
 >
   <div
     className="row"
@@ -14,7 +14,7 @@ exports[`Header renders without unexpected changes 1`] = `
       className="col-sm text-center h1 "
     >
       <div
-        className="noselect canselect text-light title"
+        className="noselect canselect title logo-text"
         href="/#"
         role="link"
         style={

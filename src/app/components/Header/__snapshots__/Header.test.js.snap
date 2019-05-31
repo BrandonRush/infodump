@@ -36,6 +36,11 @@ exports[`Header renders without unexpected changes 1`] = `
         >
           dump
         </span>
+        <span
+          id="beta"
+        >
+          beta
+        </span>
       </div>
     </div>
     <div

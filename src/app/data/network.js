@@ -52,7 +52,7 @@ const getIP_RTC = function() {
 
 const getIP = async () => {
   try {
-    const response = await fetch('infodump.io/ip/');
+    const response = await fetch('api.infodump.io/ip/');
     return await response.text();
   } catch (error) {
     console.error(error);
@@ -61,7 +61,7 @@ const getIP = async () => {
 
 const getUserAgent = async () => {
   try {
-    const response = await fetch('infodump.io/useragent/');
+    const response = await fetch('api.infodump.io/useragent/');
     return await response.text();
   } catch (error) {
     console.error(error);

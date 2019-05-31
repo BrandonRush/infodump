@@ -1,6 +1,9 @@
 .title {
   color: setcolor('normal', 'logo') !important;
   white-space: nowrap;
+
+  transform: scale(0.98, 0.98);
+  transition: transform 0.1s;
 }
 
 .theme-switch {
@@ -8,9 +11,31 @@
 }
 
 #info {
+  font-weight: 400;
 }
 
 #dump {
   color: lighten(setcolor('normal', 'logo'), 5%);
+  font-weight: 300;
+}
+
+#beta {
+  overflow: auto;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: -15px;
+  color: white;
+  background: setcolor('normal', 'logo');
   font-weight: 400;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 3px 5px 3px 7px;
+  margin-left: 4px;
+  letter-spacing: 2px;
+
+  &:hover {
+    background: lighten(setcolor('normal', 'logo'), 10%);
+  }
 }

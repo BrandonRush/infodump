@@ -49,9 +49,16 @@ class PanelManager extends Component {
 
   handleSearch = e => {
     this.setState({ searchQuery: e.target.value });
-    let searchList = new Fuse(this.state.panels, this._searchOptions);
-    let results = searchList.search(e.target.value);
-    this.setState({ panels: results });
+
+    if (!!e.target.value) {
+      let searchList = new Fuse(this.props.panels, this._searchOptions);
+      let results = searchList.search(e.target.value);
+      console.log(results);
+
+      this.setState({ panels: results });
+    } else {
+      this.setState({ panels: this.props.panels });
+    }
   };
 
   render() {

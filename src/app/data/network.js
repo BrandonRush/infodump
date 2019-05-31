@@ -51,21 +51,28 @@ const getIP_RTC = function() {
 };
 
 const getIP = async () => {
+  let response;
   try {
-    const response = await fetch('api.infodump.io/ip/');
-    return await response.text();
+    response = await fetch('http://api.infodump.io/ip/');
+    response = response.text();
   } catch (error) {
     console.error(error);
+    response = 'Not Found';
   }
+  return response;
 };
 
 const getUserAgent = async () => {
+  let response;
   try {
-    const response = await fetch('api.infodump.io/useragent/');
-    return await response.text();
+    response = await fetch('https://api.infodump.io/useragent/');
+    response = response.text();
   } catch (error) {
     console.error(error);
+    response = 'Not Found';
   }
+  console.log(response);
+  return response;
 };
 
 const connection =

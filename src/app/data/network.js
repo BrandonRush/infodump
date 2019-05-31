@@ -53,7 +53,7 @@ const getIP_RTC = function() {
 const getIP = async () => {
   let response;
   try {
-    response = await fetch('http://api.infodump.io/ip/');
+    response = await fetch('https://api.infodump.io/ip/');
     response = response.text();
   } catch (error) {
     console.error(error);
@@ -71,7 +71,6 @@ const getUserAgent = async () => {
     console.error(error);
     response = 'Not Found';
   }
-  console.log(response);
   return response;
 };
 

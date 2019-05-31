@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import * as Server from './server_utils';
 
 const getIP_RTC = function() {
   var myPeerConnection =
@@ -51,27 +52,11 @@ const getIP_RTC = function() {
 };
 
 const getIP = async () => {
-  let response;
-  try {
-    response = await fetch('https://api.infodump.io/ip/');
-    response = response.text();
-  } catch (error) {
-    console.error(error);
-    response = 'Not Found';
-  }
-  return response;
+  return await Server.getFromServer('https://api.infodump.io/ip/');
 };
 
 const getUserAgent = async () => {
-  let response;
-  try {
-    response = await fetch('https://api.infodump.io/useragent/');
-    response = response.text();
-  } catch (error) {
-    console.error(error);
-    response = 'Not Found';
-  }
-  return response;
+  return Server.getFromServer('https://api.infodump.io/useragent/');
 };
 
 const connection =

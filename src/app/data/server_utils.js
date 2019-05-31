@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export async function getFromServer(resource) {
+  console.log(resource);
   let response;
   try {
     response = await axios(resource);

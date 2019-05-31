@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { getFromServer } from './server_utils';
 
 const getIP_RTC = function() {

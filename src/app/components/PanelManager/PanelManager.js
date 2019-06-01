@@ -60,6 +60,10 @@ class PanelManager extends Component {
     }
   };
 
+  handleClear = () => {
+    this.setState({ searchQuery: '', panels: this.props.panels });
+  };
+
   render() {
     let selectedPanel = this.state.selected
       ? this.state.panels.find(panel => this.state.selected === panel.title)
@@ -75,6 +79,7 @@ class PanelManager extends Component {
             <SearchBar
               value={this.state.searchQuery}
               onChange={this.handleSearch}
+              clearSearch={this.handleClear}
             />
           )}
           <SortableContainer

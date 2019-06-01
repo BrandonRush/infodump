@@ -29,6 +29,35 @@
     align-items: center;
     cursor: text;
 
+    & > .sep {
+      color: rgba(102, 119, 136, 0.5);
+      font-size: 17px;
+      margin: 8px;
+    }
+
+    & > .prefix {
+      font-size: 13px;
+      display: block;
+      color: rgba(102, 119, 136, 0.5);
+      font-weight: 400;
+      user-select: none;
+      line-height: 1.5em;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: rgba(241, 243, 245, 0.5);
+      margin: 0 0 0 16px;
+      box-shadow: 0 1px 1px rgba(102, 119, 136, 0.25);
+    }
+
+    & > i {
+      font-size: 2rem;
+      color: setcolor('normal', 'logo');
+
+      &:active {
+        color: darken(setcolor('normal', 'logo'), 10%);
+      }
+    }
+
     &::before {
       content: '';
       display: inline-block;
@@ -82,26 +111,6 @@ input {
 }
 
 .prefix {
-  font-size: 13px;
-  display: block;
-  color: rgba(102, 119, 136, 0.5);
-  font-weight: 400;
-  user-select: none;
-  line-height: 1.5em;
-  padding: 2px 8px;
-  border-radius: 3px;
-  background: rgba(241, 243, 245, 0.5);
-  margin: 0 0 0 16px;
-  box-shadow: 0 1px 1px rgba(102, 119, 136, 0.25);
-}
-
-.search-bar > .sep {
-  color: rgba(102, 119, 136, 0.5);
-  font-size: 17px;
-  margin: 8px;
-}
-
-.search-bar > .prefix {
   font-size: 13px;
   display: block;
   color: rgba(102, 119, 136, 0.5);

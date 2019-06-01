@@ -13,7 +13,16 @@ class SearchBar extends Component {
             onChange={this.props.onChange}
             type="text"
             placeholder="Search..."
+            spellCheck="false"
           />
+          {this.props.value && (
+            <i
+              className="ion-md-close-circle canselect"
+              onClick={this.props.clearSearch}
+              role="button"
+              aria-label="Clear search"
+            />
+          )}
         </label>
       </form>
     );

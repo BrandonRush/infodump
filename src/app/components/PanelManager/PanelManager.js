@@ -23,7 +23,7 @@ const SortableContainer = sortableContainer(({ children }) => {
 });
 
 class PanelManager extends Component {
-  _searchOptions = { keys: ['title', 'summary'] };
+  _searchOptions = { keys: ['title', 'summary', 'data.name', 'preview.name'] };
 
   state = {
     panels: this.props.panels,
@@ -53,7 +53,6 @@ class PanelManager extends Component {
     if (!!e.target.value) {
       let searchList = new Fuse(this.props.panels, this._searchOptions);
       let results = searchList.search(e.target.value);
-      console.log(results);
 
       this.setState({ panels: results });
     } else {

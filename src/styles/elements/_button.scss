@@ -2,7 +2,7 @@ button {
   @include shadowhigh;
   @include pressedDown;
 
-  background: setcolor('normal', 'primary-dark');
+  background: setcolor('normal', 'logo');
 
   border: none;
   border-radius: $border-radius;

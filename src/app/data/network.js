@@ -84,7 +84,7 @@ const connection =
   navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
 const data = [
-  { name: 'User Agent (HTTP Header)', value: getUserAgent, variant: 'fetch' },
+  { name: 'User Agent (HTTP Header)', value: getUserAgent, variant: 'auto' },
   {
     name: 'API Support',
     value: connection?.effectiveType ?? 'No Support',

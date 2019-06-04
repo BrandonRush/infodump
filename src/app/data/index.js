@@ -1,9 +1,10 @@
+import audioPanel from './audio';
 import browserPanel from './browser';
+import canvasPanel from './canvas';
 import devicePanel from './device';
 import networkPanel from './network';
-import audioPanel from './audio';
-import pluginsPanel from './plugins';
 import osPanel from './operatingsystem';
+import pluginsPanel from './plugins';
 
 const data = [
   browserPanel,
@@ -12,6 +13,7 @@ const data = [
   audioPanel,
   pluginsPanel,
   osPanel,
+  canvasPanel,
 
   // {
   //   title: 'Location',

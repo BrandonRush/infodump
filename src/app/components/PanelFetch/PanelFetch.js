@@ -48,12 +48,16 @@ class PanelFetch extends Component {
         <div className="item-container item-container-value item-container-button nohover">
           <span className="normal-text item-entry item-entry-value item-entry-button">
             {this.state.fetching && (
-              <Spinner animation="border" role="status" />
+              <Spinner
+                animation="border"
+                role="status"
+                style={{ color: 'hsl(233, 36%, 65%)' }}
+              />
             )}
 
             {!this.state.fetching && !this.props.auto && (
               <button aria-label="Run" onClick={this.fetchValue}>
-                {this.state.fetching ? 'Loading' : 'Run Test'}
+                {this.state.fetching ? 'Loading' : this.props.text || 'Fetch'}
               </button>
             )}
 

@@ -9,6 +9,7 @@ import Badge from '../Badge/Badge';
 class PanelItem extends Component {
   static propTypes = {
     data: PropTypes.object,
+    clickable: PropTypes.bool,
   };
 
   state = { copied: false };
@@ -87,6 +88,8 @@ class PanelItem extends Component {
           .reduce((prev, curr) => prev + curr + ', ', '')
           .trim()
           .slice(0, -1);
+      } else if (typeof elem === 'object') {
+        value = elem;
       }
     };
     return this.checkIfEmpty(value);
@@ -99,7 +102,7 @@ class PanelItem extends Component {
       <article className="item">
         <div
           className="item-container item-container-name"
-          onClick={this.copyName}
+          onClick={this.props.clickable ? this.copyName : null}
         >
           <span className="bolder-text item-entry item-entry-name">
             {this.props.data.name}
@@ -107,7 +110,7 @@ class PanelItem extends Component {
         </div>
         <div
           className="item-container item-container-value"
-          onClick={this.copyValue}
+          onClick={this.props.clickable ? this.copyValue : null}
         >
           {<Badge body={value} />}
         </div>

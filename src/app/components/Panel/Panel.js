@@ -10,7 +10,6 @@ import PanelFetch from '../PanelFetch/PanelFetch';
 
 class Panel extends Component {
   static propTypes = {
-    // colors: PropTypes.object,
     data: PropTypes.object,
   };
 
@@ -20,6 +19,66 @@ class Panel extends Component {
 
   componentDidMount() {}
 
+  getPreview = previewArr => {
+    return previewArr.map(item => {
+      if (!item.variant) {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelItem data={data} />}
+          />
+        );
+      } else if (item.variant === 'fetch') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch data={data} />}
+          />
+        );
+      } else if (item.variant === 'auto') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch auto data={data} />}
+          />
+        );
+      }
+    });
+  };
+
+  getData = dataArr => {
+    return dataArr.map(item => {
+      if (!item.variant) {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelItem clickable data={data} />}
+          />
+        );
+      } else if (item.variant === 'fetch') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch clickable data={data} />}
+          />
+        );
+      } else if (item.variant === 'auto') {
+        return (
+          <PanelListing
+            key={item.name}
+            data={item}
+            render={data => <PanelFetch clickable auto data={data} />}
+          />
+        );
+      }
+    });
+  };
+
   render() {
     const colors = this.props.data.colors || {
       key: 'black',
@@ -27,63 +86,10 @@ class Panel extends Component {
       secondary: 'gray',
     };
 
-    const previewArr = this.props.data.preview;
-    let previewList = previewArr.map(item => {
-      if (!item.variant) {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelItem data={data} />}
-          />
-        );
-      } else if (item.variant === 'fetch') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch data={data} />}
-          />
-        );
-      } else if (item.variant === 'auto') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch auto data={data} />}
-          />
-        );
-      }
-    });
-
-    const dataArr = this.props.data.data;
-    let dataList = dataArr.map(item => {
-      if (!item.variant) {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelItem data={data} />}
-          />
-        );
-      } else if (item.variant === 'fetch') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch data={data} />}
-          />
-        );
-      } else if (item.variant === 'auto') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch auto data={data} />}
-          />
-        );
-      }
-    });
+    const previewList = this.getPreview(this.props.data.preview);
+    const dataList = this.getData(
+      this.props.data.preview.concat(this.props.data.data)
+    );
 
     return (
       <PanelConsumer>
@@ -96,6 +102,7 @@ class Panel extends Component {
             onClick={() => {
               this.props.data.title !== context.selected &&
                 context.changeSelection(this.props.data.title);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
             <h5
@@ -124,8 +131,9 @@ class Panel extends Component {
               </button>
             </h5>
             <div className="panel-body nohighlight">
-              {previewList}
-              {this.props.data.title === context.selected ? dataList : null}
+              {this.props.data.title === context.selected
+                ? dataList
+                : previewList}
             </div>
           </section>
         )}

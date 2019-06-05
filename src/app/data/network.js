@@ -1,6 +1,7 @@
 import React from 'react';
-import { getFromServer } from './server_utils';
+import Cover from '../components/Cover/Cover';
 import axios from 'axios';
+import { getFromServer } from './server_utils';
 
 const getIP_RTC = function() {
   var myPeerConnection =
@@ -84,6 +85,7 @@ const connection =
   navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
 const data = [
+  { name: 'IP Address', value: getIP, variant: 'auto' },
   { name: 'User Agent (HTTP Header)', value: getUserAgent, variant: 'auto' },
   {
     name: 'API Support',
@@ -111,8 +113,8 @@ const networkPanel = {
   title: 'Network',
   summary: 'Network specifications and information.',
   icon: <i className="icon mr-2 ion-md-pulse mr-1" />,
+  cover: <Cover title={'Network'} svg={'network.svg'} subtitle={getIP} />,
   colors: { header: 'blue' },
-  preview: [{ name: 'IP Address', value: getIP, variant: 'auto' }],
   data: data,
 };
 export default networkPanel;

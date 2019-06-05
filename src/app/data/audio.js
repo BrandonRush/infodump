@@ -1,4 +1,5 @@
 import React from 'react';
+import Cover from '../components/Cover/Cover';
 
 const setup = () => {
   const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -8,6 +9,8 @@ const setup = () => {
 const audioCtx = setup();
 
 const data = [
+  { name: 'sampleRate', value: audioCtx.sampleRate },
+  { name: 'Nyquist Frequency', value: audioCtx.sampleRate / 2 },
   { name: 'state', value: audioCtx.state },
   { name: 'channelCount', value: audioCtx.destination.channelCount },
   { name: 'maxChannelCount', value: audioCtx.destination.maxChannelCount },
@@ -20,12 +23,18 @@ const data = [
   { name: 'numberOfOutputs', value: audioCtx.destination.numberOfOutputs },
 ];
 
-export const audioPanel = {
+const audioPanel = {
   title: 'Audio',
   summary: 'Learn about the audio capabilities of your device.',
   icon: <i className="icon mr-2 ion-md-musical-notes mr-1" />,
+  cover: (
+    <Cover
+      title={'Audio'}
+      svg={'audio.svg'}
+      subtitle={`${audioCtx.sampleRate} Hz`}
+    />
+  ),
   colors: { header: 'olivedrab' },
-  preview: [{ name: 'sampleRate', value: audioCtx.sampleRate }],
   data: data,
 };
 export default audioPanel;

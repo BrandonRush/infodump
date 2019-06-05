@@ -1,5 +1,6 @@
 import React from 'react';
 import platform from 'platform';
+import Cover from '../components/Cover/Cover';
 
 const getManufacturer = function() {
   return platform.manufacturer;
@@ -18,6 +19,14 @@ const getDisplay = function() {
 };
 
 const data = [
+  {
+    name: 'Product',
+    value: getProduct,
+  },
+  {
+    name: 'Display',
+    value: getDisplay,
+  },
   { name: 'Manufacturer', value: getManufacturer },
   { name: 'platform', value: window.navigator.platform },
   { name: 'hardwareConcurrency', value: window.navigator.hardwareConcurrency },
@@ -36,18 +45,16 @@ const data = [
 const devicePanel = {
   title: 'Device',
   summary: 'Learn specs of your current device and monitor.',
-  icon: <i className="icon mr-2 ion-md-desktop mr-1" />,
+  icon: <i className="icon mr-2 ion-ios-desktop mr-1" />,
+  cover: (
+    <Cover
+      title={'Device'}
+      svg={'device.svg'}
+      subtitle={`${getDisplay()} resolution`}
+    />
+  ),
   colors: { header: 'red' },
-  preview: [
-    {
-      name: 'Product',
-      value: getProduct,
-    },
-    {
-      name: 'Display',
-      value: getDisplay,
-    },
-  ],
+  preview: [],
   data: data,
 };
 export default devicePanel;

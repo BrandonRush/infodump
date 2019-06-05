@@ -1,4 +1,5 @@
 import React from 'react';
+import Cover from '../components/Cover/Cover';
 
 const getFingerprint = () => {
   const canvas = document.createElement('canvas');
@@ -37,8 +38,8 @@ export const canvasPanel = {
   title: 'Canvas',
   summary: 'All Canvas API data that is detected.',
   icon: <i className="icon mr-2 ion-md-color-palette mr-1" />,
+  cover: <Cover title={'Canvas'} svg={`canvas.svg`} subtitle={`Canvas`} />,
   colors: { header: 'olivedrab' },
-  preview: [{ name: 'sampleRate', value: 'test' }],
   data: data,
 };
 export default canvasPanel;

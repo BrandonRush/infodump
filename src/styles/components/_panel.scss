@@ -12,8 +12,8 @@
   // min-width: 0;
   // min-width: 360px !important;
 
-  width: 400px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   // width: 300px;
   // height: 200px;
 
@@ -52,6 +52,7 @@
   &-body {
     flex: 1 1 auto;
     padding: 1.25rem;
+    height: 100%;
   }
 }
 
@@ -128,4 +129,20 @@
 
 main {
   margin-bottom: 60px;
+}
+
+body > .panel-container {
+  opacity: 0.7;
+  @keyframes wiggle {
+    0% {
+      transform: rotate(3deg);
+    }
+    50% {
+      transform: rotate(-3deg);
+    }
+    100% {
+      transform: rotate(3deg);
+    }
+  }
+  // animation: wiggle 0.3s 0s infinite alternate !important;
 }

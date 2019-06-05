@@ -19,36 +19,6 @@ class Panel extends Component {
 
   componentDidMount() {}
 
-  getPreview = previewArr => {
-    return previewArr.map(item => {
-      if (!item.variant) {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelItem data={data} />}
-          />
-        );
-      } else if (item.variant === 'fetch') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch data={data} />}
-          />
-        );
-      } else if (item.variant === 'auto') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch auto data={data} />}
-          />
-        );
-      }
-    });
-  };
-
   getData = dataArr => {
     return dataArr.map(item => {
       if (!item.variant) {
@@ -86,10 +56,7 @@ class Panel extends Component {
       secondary: 'gray',
     };
 
-    const previewList = this.getPreview(this.props.data.preview);
-    const dataList = this.getData(
-      this.props.data.preview.concat(this.props.data.data)
-    );
+    const dataList = this.getData(this.props.data.data);
 
     return (
       <PanelConsumer>
@@ -105,35 +72,39 @@ class Panel extends Component {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <h5
-              className="panel-header font-weight-bold nohighlight h5"
-              title={this.props.data.summary}
-              style={{
-                color: colors.header,
-                border: 'none',
-                background: 'white',
-              }}
-            >
-              {this.props.data.icon}
-              {this.props.data.title}
-              <button
-                type="button"
-                className={classNames('close ', {
-                  invisible: this.props.data.title !== context.selected,
-                })}
-                aria-label="Close"
-                style={{ color: 'black' }}
-                onClick={() => {
-                  context.changeSelection(this.props.data.title);
-                }}
-              >
-                <i className="icon mr-2 ion-md-close" />
-              </button>
-            </h5>
             <div className="panel-body nohighlight">
-              {this.props.data.title === context.selected
-                ? dataList
-                : previewList}
+              {this.props.data.title === context.selected ? (
+                <React.Fragment>
+                  <h5
+                    className="panel-header font-weight-bold nohighlight h5"
+                    title={this.props.data.summary}
+                    style={{
+                      color: colors.header,
+                      border: 'none',
+                      background: 'white',
+                    }}
+                  >
+                    {this.props.data.icon}
+                    {this.props.data.title}
+                    <button
+                      type="button"
+                      className={classNames('close ', {
+                        invisible: this.props.data.title !== context.selected,
+                      })}
+                      aria-label="Close"
+                      style={{ color: 'black' }}
+                      onClick={() => {
+                        context.changeSelection(this.props.data.title);
+                      }}
+                    >
+                      <i className="icon mr-2 ion-md-close" />
+                    </button>
+                  </h5>
+                  {dataList}
+                </React.Fragment>
+              ) : (
+                this.props.data.cover
+              )}
             </div>
           </section>
         )}

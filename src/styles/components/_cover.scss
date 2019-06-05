@@ -1,0 +1,34 @@
+.cover {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cover-svg {
+  width: 160px;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+
+  filter: grayscale(100%) opacity(40%);
+
+  .panel:hover & {
+    filter: grayscale(30%) opacity(80%);
+  }
+  transition: 0.7s;
+}
+
+.cover-header {
+  @include primary-text;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.cover-subtitle {
+  @include secondary-text;
+  margin: auto;
+  margin-top: 25px;
+}

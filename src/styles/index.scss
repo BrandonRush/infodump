@@ -1,5 +1,7 @@
-// import utilities
-@import 'utils/appearance';
+//import defaults
+@import 'utils/defaults';
+
+//import utils
 @import 'utils/colors';
 @import 'utils/helpers';
 @import 'utils/typography';
@@ -14,6 +16,7 @@
 @import 'components/notification';
 @import 'components/searchbar';
 @import 'components/badge';
+@import 'components/cover';
 
 //import elements
 @import 'elements/button';

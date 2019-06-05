@@ -1,9 +1,6 @@
 .title {
   color: setcolor('normal', 'logo') !important;
   white-space: nowrap;
-
-  transform: scale(0.98, 0.98);
-  transition: transform 0.1s;
 }
 
 .theme-switch {
@@ -11,12 +8,11 @@
 }
 
 #info {
-  font-weight: 400;
+  @include logo-text-start;
 }
 
 #dump {
-  color: lighten(setcolor('normal', 'logo'), 5%);
-  font-weight: 300;
+  @include logo-text-end;
 }
 
 #beta {

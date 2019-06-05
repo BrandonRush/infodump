@@ -22,3 +22,23 @@
   font-size: 3rem;
   white-space: nowrap;
 }
+
+@mixin logo-text-start {
+  color: setcolor('normal', 'logo');
+  font-weight: 400;
+}
+
+@mixin logo-text-end {
+  color: lighten(setcolor('normal', 'logo'), 5%);
+  font-weight: 300;
+}
+
+@mixin primary-text {
+  color: setcolor('normal', 'logo');
+  font-weight: 500;
+}
+
+@mixin secondary-text {
+  color: lighten(setcolor('normal', 'logo'), 5%);
+  font-weight: 400;
+}

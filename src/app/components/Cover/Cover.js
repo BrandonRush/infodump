@@ -55,17 +55,15 @@ class Cover extends Component {
       <section className="cover">
         <h5 className="cover-header">{this.props.title}</h5>
         <img className="cover-svg" src={this.props.svg} alt="panel cover" />
-        <p className="cover-subtitle normal-text">
-          {this.state.fetching ? (
-            <Spinner
-              animation="border"
-              role="status"
-              style={{ color: 'hsl(233, 36%, 65%)' }}
-            />
-          ) : (
-            message
-          )}
-        </p>
+        {this.state.loading ? (
+          <Spinner
+            animation="border"
+            role="status"
+            style={{ color: 'hsl(233, 36%, 65%)' }}
+          />
+        ) : (
+          <p className="cover-subtitle normal-text">{message}</p>
+        )}
       </section>
     );
   }

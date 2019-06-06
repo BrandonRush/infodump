@@ -11,12 +11,12 @@ class PanelItem extends Component {
 
   state = { copied: false };
 
-  sanitize = data => {
+  sanitize(data) {
     const sanitizedData = data.trim().replace(/\"/g, '');
     return sanitizedData;
-  };
+  }
 
-  createCopyElem = () => {
+  createCopyElem() {
     document.querySelectorAll('.notification').forEach(node => {
       node.parentElement.removeChild(node);
     });
@@ -26,7 +26,7 @@ class PanelItem extends Component {
     notification.classList.add('notification');
 
     document.body.appendChild(notification);
-  };
+  }
 
   copyValue = async event => {
     this.copy(event, this.props.data.value);
@@ -51,25 +51,25 @@ class PanelItem extends Component {
     }
   };
 
-  checkIfEmpty = value => {
+  checkIfEmpty(value) {
     return value || 'Not Found';
-  };
+  }
 
-  checkBadge = value => {
+  checkBadge(value) {
     if (value === 'Not Found' || value === 'No Support') {
       return <Badge body={value} />;
     }
-  };
+  }
 
-  checkIfBadge = value => {
+  checkIfBadge(value) {
     if (value === 'Not Found' || value === 'No Support') {
       return false;
     } else {
       return true;
     }
-  };
+  }
 
-  fixValue = elem => {
+  fixValue(elem) {
     let value = do {
       if (typeof elem === 'function') {
         value = elem();
@@ -90,7 +90,7 @@ class PanelItem extends Component {
       }
     };
     return this.checkIfEmpty(value);
-  };
+  }
 
   render() {
     let value = this.fixValue(this.props.data.value);

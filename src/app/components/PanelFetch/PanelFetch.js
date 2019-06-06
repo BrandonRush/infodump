@@ -14,28 +14,28 @@ class PanelFetch extends Component {
 
   state = { value: null, fetching: false };
 
-  async componentDidMount() {
+  fetchValue = async () => {
+    this.setState({ fetching: true });
+    const value = this.checkIfEmpty(await this.props.data.value());
+    this.setState({ value: value, fetching: false });
+  };
+
+  componentDidMount = async () => {
     this._mounted = true;
     if (this.props.auto) {
       if (this._mounted) {
         await this.fetchValue();
       }
     }
-  }
+  };
 
   componentWillUnmount() {
     this._mounted = false;
   }
 
-  checkIfEmpty = value => {
+  checkIfEmpty(value) {
     return value || 'Not Found';
-  };
-
-  fetchValue = async () => {
-    this.setState({ fetching: true });
-    const value = this.checkIfEmpty(await this.props.data.value());
-    this.setState({ value: value, fetching: false });
-  };
+  }
 
   render() {
     return !this.state.value ? (
@@ -67,6 +67,7 @@ class PanelFetch extends Component {
       </div>
     ) : (
       <PanelItem
+        clickable
         data={{ name: this.props.data.name, value: this.state.value }}
       />
     );

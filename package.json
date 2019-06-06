@@ -31,6 +31,8 @@
     "react-search-box": "^2.0.1",
     "react-sortable-hoc": "^1.9.1",
     "react-transition-group": "^4.0.1",
+    "simplebar": "^4.0.0",
+    "simplebar-react": "^1.0.0",
     "styled-components": "^4.0.2",
     "styled-icons": "^5.5.0"
   },

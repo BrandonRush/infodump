@@ -31,7 +31,8 @@ const audioPanel = {
     <Cover
       title={'Audio'}
       svg={'audio.svg'}
-      subtitle={`${audioCtx.sampleRate} Hz`}
+      append="Hz"
+      subtitle={`${audioCtx.sampleRate}`}
     />
   ),
   colors: { header: 'olivedrab' },

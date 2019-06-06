@@ -31,6 +31,8 @@ function getBrowserCover(version) {
       return 'browser/safari.svg';
     case 'MICROSOFTEDGE':
       return 'browser/microsoftedge.svg';
+    case 'OPERA':
+      return 'browser/opera.svg';
     case 'PLAYSTATION4':
       return 'browser/playstation.svg';
     default:

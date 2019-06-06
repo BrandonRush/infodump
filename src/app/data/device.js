@@ -50,7 +50,8 @@ const devicePanel = {
     <Cover
       title={'Device'}
       svg={'device.svg'}
-      subtitle={`${getDisplay()} resolution`}
+      append="resolution"
+      subtitle={`${getDisplay()}`}
     />
   ),
   colors: { header: 'red' },

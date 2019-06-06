@@ -24,10 +24,14 @@ class Cover extends Component {
     if (this._mounted) {
       if (typeof this.props.subtitle === 'function') {
         this.setState({ loading: true });
-        let finalSubtitle = await this.props.subtitle();
-        this.setState({ loading: false, subtitle: finalSubtitle });
+        this.setState({
+          loading: false,
+          subtitle: await this.props.subtitle(),
+        });
       } else {
-        this.setState({ subtitle: this.props.subtitle });
+        this.setState({
+          subtitle: this.props.subtitle,
+        });
       }
     }
   }
@@ -37,6 +41,16 @@ class Cover extends Component {
   }
 
   render() {
+    let message = this.state.subtitle;
+
+    if (this.props.prepend) {
+      message = this.props.prepend + ' ' + message;
+    }
+
+    if (this.props.append) {
+      message = message + ' ' + this.props.append;
+    }
+
     return (
       <section className="cover">
         <h5 className="cover-header">{this.props.title}</h5>
@@ -49,7 +63,7 @@ class Cover extends Component {
               style={{ color: 'hsl(233, 36%, 65%)' }}
             />
           ) : (
-            this.state.subtitle
+            message
           )}
         </p>
       </section>

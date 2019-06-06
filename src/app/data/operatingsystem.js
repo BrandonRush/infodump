@@ -33,6 +33,7 @@ const getOS_full = function() {
 function getOSCover(version) {
   switch (version.toUpperCase().replace(/\s/g, '')) {
     case 'WINDOWS':
+    case 'WINDOWSPHONE':
       return 'os/windows.svg';
     case 'MACOS':
       return 'os/macos.svg';

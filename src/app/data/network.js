@@ -113,7 +113,14 @@ const networkPanel = {
   title: 'Network',
   summary: 'Network specifications and information.',
   icon: <i className="icon mr-2 ion-md-pulse mr-1" />,
-  cover: <Cover title={'Network'} svg={'network.svg'} subtitle={getIP} />,
+  cover: (
+    <Cover
+      title={'Network'}
+      svg={'network.svg'}
+      prepend="Your IP is"
+      subtitle={getIP}
+    />
+  ),
   colors: { header: 'blue' },
   data: data,
 };

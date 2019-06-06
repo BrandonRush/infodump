@@ -16,7 +16,8 @@ const pluginsPanel = {
     <Cover
       title={'Plugins'}
       svg={'plugins.svg'}
-      subtitle={`${pluginCount} plugins`}
+      append="plugins"
+      subtitle={`${pluginCount}`}
     />
   ),
   colors: { header: 'orangered' },

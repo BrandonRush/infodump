@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Spinner } from 'react-bootstrap';
 
+import PropTypes from 'prop-types';
+
 class Cover extends Component {
+  static propTypes = {
+    append: PropTypes.string,
+    prepend: PropTypes.string,
+    subtitle: PropTypes.string.isRequired,
+    svg: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  };
+
   _mounted = false;
 
   state = {

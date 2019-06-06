@@ -1,4 +1,4 @@
-@mixin flex-container-center($direction) {
+@mixin flex-container-center($direction: row) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@
 
 @mixin shadowlow {
   box-shadow: map-get($shadows, 'low');
-  box-shadow: map-get($shadows, 'lowspread');
+  box-shadow: map-get($shadows, 'veryhighspread');
 }
 
 @mixin shadowmedium {
@@ -34,4 +34,9 @@
 @mixin hovering {
   transform: scale(1.01, 1.01) translateY(-2px);
   transition: box-shadow 0.5s, transform 0.4s;
+}
+
+@mixin dragging {
+  box-shadow: map-get($shadows, 'medium');
+  box-shadow: map-get($shadows, 'veryhighspread');
 }

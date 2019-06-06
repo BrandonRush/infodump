@@ -6,28 +6,25 @@ import Cover from '../components/Cover/Cover';
 
 const browser = Bowser.getParser(window.navigator.userAgent);
 
-const getFamily = function() {
-  return platform.os.family;
-};
-
 const getArch = function() {
   return platform.os.architecture;
-};
-
-const getOSVersion = function() {
-  return platform.os.version;
 };
 
 const getOs = function() {
   return browser.getOSName();
 };
 
+const getOsVersionName = function() {
+  return browser.getOS().versionName;
+};
+
 const getOsVersion = function() {
-  return browser.getOSVersion();
+  return browser.getOS().version;
 };
 
 const getOS_full = function() {
-  return `${getFamily()} ${getOSVersion()} ${getArch()} bit`;
+  if (getOsVersionName()) return getOs() + ' ' + getOsVersionName();
+  else return getOs() + ' ' + getOsVersion();
 };
 
 function getOSCover(version) {
@@ -50,7 +47,12 @@ function getOSCover(version) {
   }
 }
 
-const data = [{ name: 'Architecture', value: `${getArch()} bit` }];
+const data = [
+  { name: 'Operating System', value: getOs() },
+  { name: 'Version', value: getOsVersion() },
+  { name: 'Version Name', value: getOsVersionName() },
+  { name: 'Architecture', value: getArch() + ' bit' },
+];
 
 const osPanel = {
   title: 'Operating System',
@@ -58,18 +60,8 @@ const osPanel = {
   icon: <i className="icon mr-2 ion-md-cube mr-1" />,
   colors: { header: 'teal' },
   cover: (
-    <Cover
-      title={'OS'}
-      svg={`${getOSCover(getOs())}`}
-      subtitle={`${getOs()} ${getOsVersion()}`}
-    />
+    <Cover title={'OS'} svg={`${getOSCover(getOs())}`} subtitle={getOS_full} />
   ),
-  preview: [
-    {
-      name: 'OS',
-      value: getOS_full,
-    },
-  ],
   data: data,
 };
 export default osPanel;

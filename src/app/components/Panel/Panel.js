@@ -19,35 +19,39 @@ class Panel extends Component {
 
   componentDidMount() {}
 
-  getData = dataArr => {
+  getData(dataArr) {
     return dataArr.map(item => {
-      if (!item.variant) {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelItem clickable data={data} />}
-          />
-        );
-      } else if (item.variant === 'fetch') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch clickable data={data} />}
-          />
-        );
-      } else if (item.variant === 'auto') {
-        return (
-          <PanelListing
-            key={item.name}
-            data={item}
-            render={data => <PanelFetch clickable auto data={data} />}
-          />
-        );
+      switch (item.variant) {
+        case null:
+        case undefined:
+        case '':
+          return (
+            <PanelListing
+              key={item.name}
+              data={item}
+              render={data => <PanelItem clickable data={data} />}
+            />
+          );
+        case 'fetch':
+          return (
+            <PanelListing
+              key={item.name}
+              data={item}
+              render={data => <PanelFetch clickable data={data} />}
+            />
+          );
+        case 'auto':
+          console.log(item);
+          return (
+            <PanelListing
+              key={item.name}
+              data={item}
+              render={data => <PanelFetch clickable auto data={data} />}
+            />
+          );
       }
     });
-  };
+  }
 
   render() {
     const colors = this.props.data.colors || {

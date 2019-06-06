@@ -1,6 +1,14 @@
+header {
+  @include flex-container-center;
+}
+
 .title {
+  @include logo-text;
+
   color: setcolor('normal', 'logo') !important;
   white-space: nowrap;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .theme-switch {

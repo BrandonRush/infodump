@@ -41,7 +41,6 @@ class Panel extends Component {
             />
           );
         case 'auto':
-          console.log(item);
           return (
             <PanelListing
               key={item.name}

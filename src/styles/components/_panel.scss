@@ -1,5 +1,7 @@
 .panel {
   @include shadowlow;
+  // box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+  //   0 15px 40px rgba(166, 173, 201, 0.2);
 
   background-clip: border-box;
   background-color: setcolor('normal', 'light-background');
@@ -131,8 +133,20 @@ main {
   margin-bottom: 60px;
 }
 
+// Dragging Styling
 body > .panel-container {
-  opacity: 0.7;
+  opacity: 0.6;
+  filter: blur(1px);
+
+  & * {
+    background: rgb(227, 235, 241);
+    fill: red;
+  }
+
+  & > .panel {
+    @include dragging;
+  }
+
   @keyframes wiggle {
     0% {
       transform: rotate(3deg);

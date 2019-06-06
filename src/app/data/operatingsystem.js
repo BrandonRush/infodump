@@ -31,7 +31,9 @@ function getOSCover(version) {
   switch (version.toUpperCase().replace(/\s/g, '')) {
     case 'WINDOWS':
     case 'WINDOWSPHONE':
-      return 'os/windows.svg';
+      return getOsVersionName() === '10'
+        ? 'os/windows10.svg'
+        : 'os/windows.svg';
     case 'MACOS':
       return 'os/macos.svg';
     case 'LINUX':

@@ -1,6 +1,8 @@
 import React from 'react';
 import Cover from '../components/Cover/Cover';
 
+const canvas = document.createElement('canvas');
+
 const getFingerprint = () => {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -19,12 +21,28 @@ const getFingerprint = () => {
   return canvas.toDataURL();
 };
 
+function testToDataURL(mime) {
+  try {
+    canvas.width = canvas.height = 1;
+    var uri = canvas.toDataURL(mime);
+    return uri.match(mime) !== null;
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+}
+
 const image = <img alt="Canvas fingerprint." src={getFingerprint()} />;
 
 const data = [
-  // { name: 'Canvas Support', value: audioCtx.state },
   // { name: 'Text API', value: audioCtx.destination.channelCount },
-  // { name: 'Canvas toDataURL', value: audioCtx.destination.maxChannelCount },
+  {
+    name: 'Canvas Support',
+    value: !!(canvas.getContext && canvas.getContext('2d')),
+  },
+  { name: 'toDataURL (jpeg)', value: testToDataURL('image/jpeg') },
+  { name: 'toDataURL (png)', value: testToDataURL('image/png') },
+  { name: 'toDataURL (webp)', value: testToDataURL('image/webp') },
   { name: 'Fingerprint Image', value: image },
   {
     name: 'Fingerprint',

@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: $border-radius-secondary;
 
   margin-bottom: 80px;
 
@@ -21,7 +22,7 @@
   }
 
   .search-bar {
-    border-radius: $border-radius;
+    border-radius: $border-radius-secondary;
     background: #fff;
     display: flex;
     height: 64px;
@@ -82,31 +83,28 @@
     font-weight: 400;
     color: #111;
     min-width: 48px;
-  }
-}
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    background-color: white !important;
+    cursor: text;
+    transition: 0.5s;
+    width: 100%;
 
-input {
-  text-rendering: auto;
-  color: initial;
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: start;
-  background-color: white !important;
-  cursor: text;
-  transition: 0.5s;
-  width: 100%;
+    &::placeholder {
+      color: setcolor('normal', 'logo');
+      font-weight: 300;
+    }
 
-  &::placeholder {
-    color: setcolor('normal', 'logo');
-    font-weight: 300;
-  }
-
-  &:focus {
-    outline: none;
+    &:focus {
+      outline: none;
+    }
   }
 }
 

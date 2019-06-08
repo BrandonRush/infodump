@@ -63,6 +63,19 @@ module.exports = {
         from: path.join(__dirname, '/assets/manifest.json'),
         to: path.join(__dirname, '/build/manifest.json'),
       },
+      {
+        from: path.join(__dirname, '/assets/*.svg'),
+        to: path.join(__dirname, '/build'),
+        flatten: true,
+      },
+      {
+        from: path.join(__dirname, '/assets/browser'),
+        to: path.join(__dirname, '/build/browser'),
+      },
+      {
+        from: path.join(__dirname, '/assets/os'),
+        to: path.join(__dirname, '/build/os'),
+      },
     ]),
   ],
 };

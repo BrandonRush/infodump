@@ -3,7 +3,7 @@ import Cover from '../components/Cover/Cover';
 
 const canvas = document.createElement('canvas');
 
-const getFingerprint = () => {
+function getFingerprint() {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   const txt = 'CANVAS_FINGERPRINT';
@@ -19,7 +19,7 @@ const getFingerprint = () => {
   ctx.fillText(txt, 4, 17);
 
   return canvas.toDataURL();
-};
+}
 
 function testToDataURL(mime) {
   try {

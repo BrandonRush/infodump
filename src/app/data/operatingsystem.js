@@ -6,26 +6,29 @@ import Cover from '../components/Cover/Cover';
 
 const browser = Bowser.getParser(window.navigator.userAgent);
 
-const getArch = function() {
+function getArch() {
   return platform.os.architecture;
-};
+}
 
-const getOs = function() {
+function getOs() {
   return browser.getOSName();
-};
+}
 
-const getOsVersionName = function() {
+function getOsVersionName() {
   return browser.getOS().versionName;
-};
+}
 
-const getOsVersion = function() {
+function getOsVersion() {
   return browser.getOS().version;
-};
+}
 
-const getOS_full = function() {
-  if (getOsVersionName()) return getOs() + ' ' + getOsVersionName();
-  else return getOs() + ' ' + getOsVersion();
-};
+function getOS_full() {
+  if (getOs() === 'Linux') return getOs(); // Linux doesn't return names or version.
+
+  return getOsVersionName()
+    ? getOs() + ' ' + getOsVersionName()
+    : getOs() + ' ' + getOsVersion();
+}
 
 function getOSCover(version) {
   switch (version.toUpperCase().replace(/\s/g, '')) {
@@ -59,7 +62,7 @@ const data = [
 const osPanel = {
   title: 'Operating System',
   summary: 'Information about your current Operating System.',
-  icon: <i className="icon mr-2 ion-md-cube mr-1" />,
+  icon: <i className="icon mr-2 ion-md-cube" />,
   colors: { header: 'teal' },
   cover: (
     <Cover title={'OS'} svg={`${getOSCover(getOs())}`} subtitle={getOS_full} />

@@ -1,11 +1,19 @@
 import React from 'react';
 import Cover from '../components/Cover/Cover';
 
-const pluginCount = window.navigator.plugins.length;
+const plugins = window.navigator.plugins || navigator.plugins;
+const pluginCount = plugins.length;
 
-export const data = [
+function pluginPrint() {
+  return Object.values(plugins).reduce(
+    (prev, curr) => prev + curr.name + ', ',
+    ''
+  );
+}
+
+const data = [
   { name: 'Plugin Count', value: pluginCount },
-  { name: 'userAgent', value: window.navigator.userAgent },
+  { name: 'Plugins', value: pluginPrint },
 ];
 
 const pluginsPanel = {

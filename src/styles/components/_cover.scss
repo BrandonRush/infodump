@@ -13,12 +13,15 @@
   user-select: none;
   pointer-events: none;
 
-  filter: grayscale(100%) opacity(40%);
+  // filter: grayscale(100%) opacity(40%);
+  filter: saturate(5%) opacity(40%);
 
   .panel:hover & {
-    filter: grayscale(30%) opacity(80%);
+    // filter: grayscale(30%) opacity(80%);
+    filter: saturate(100%) opacity(80%);
   }
   transition: 0.7s;
+  margin-bottom: 5x;
 }
 
 .cover-header {
@@ -29,6 +32,6 @@
 
 .cover-subtitle {
   @include secondary-text;
-  margin: auto;
-  margin-top: 25px;
+  // margin: auto;
+  // margin-top: 25px;
 }

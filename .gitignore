@@ -3,7 +3,6 @@
 *.jpg
 *.jpeg
 *.ico
-*.svg
 
 # Whitelist Assets
 !favicon.png

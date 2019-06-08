@@ -2,50 +2,25 @@
 
 exports[`Header renders without unexpected changes 1`] = `
 <header
-  className="container container-fluid p-5 transparent nohighlight"
+  className="transparent nohighlight"
 >
   <div
-    className="row"
+    className="noselect canselect title"
+    role="link"
   >
-    <div
-      className="col-sm text-center"
+    <i
+      className="icon ion-md-information-circle mr-2"
     />
-    <div
-      className="col-sm text-center h1 "
+    <span
+      id="info"
     >
-      <div
-        className="noselect canselect title logo-text"
-        href="/#"
-        role="link"
-        style={
-          Object {
-            "cursorDecoration": "none",
-          }
-        }
-      >
-        <i
-          className="icon ion-md-information-circle mr-2"
-        />
-        <span
-          id="info"
-        >
-          info
-        </span>
-        <span
-          id="dump"
-        >
-          dump
-        </span>
-        <span
-          id="beta"
-        >
-          beta
-        </span>
-      </div>
-    </div>
-    <div
-      className="col-sm text-center text-light font-weight-normal"
-    />
+      info
+    </span>
+    <span
+      id="dump"
+    >
+      dump
+    </span>
   </div>
 </header>
 `;
